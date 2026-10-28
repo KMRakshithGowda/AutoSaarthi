@@ -13,7 +13,7 @@ services:
       - key: GEMINI_MODEL
         value: gemini-3.5-flash-lite
       - key: CHROMA_DIR
-        value: chroma_db
+        value: /tmp/autosaarthi/chroma_db
       - key: UPLOAD_DIR
         value: /tmp/autosaarthi/uploads
       - key: MANIFEST_PATH
