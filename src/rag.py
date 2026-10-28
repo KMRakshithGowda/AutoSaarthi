@@ -18,8 +18,8 @@ from docx.text.paragraph import Paragraph as DocxParagraph
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
 from langchain_core.embeddings import Embeddings
-from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_text_splitters import RecursiveCharacterTextSplitter
+from fastembed import TextEmbedding
 import pypdfium2 as pdfium
 import pytesseract
 from pypdf import PdfReader
@@ -61,6 +61,19 @@ class QueryCachedEmbeddings(Embeddings):
         return self._embed_query_cached(text)
 
 
+class FastEmbedEmbeddings(Embeddings):
+    """Use the same MiniLM-L6-v2 vectors through lightweight ONNX inference."""
+
+    def __init__(self, model: TextEmbedding):
+        self.model = model
+
+    def embed_documents(self, texts: list[str]) -> list[list[float]]:
+        return [vector.tolist() for vector in self.model.embed(texts, batch_size=8)]
+
+    def embed_query(self, text: str) -> list[float]:
+        return next(self.model.query_embed(text)).tolist()
+
+
 def _manifest() -> dict[str, Any]:
     MANIFEST_PATH.parent.mkdir(parents=True, exist_ok=True)
     if MANIFEST_PATH.exists():
@@ -89,7 +102,15 @@ def _store_instance() -> Chroma:
     if _store is None:
         with _store_lock:
             if _store is None:
-                _embeddings = HuggingFaceEmbeddings(model_name=EMBEDDING_MODEL)
+                cache_dir = os.getenv("FASTEMBED_CACHE_PATH") or None
+                _embeddings = FastEmbedEmbeddings(
+                    TextEmbedding(
+                        model_name=EMBEDDING_MODEL,
+                        cache_dir=cache_dir,
+                        threads=1,
+                        enable_cpu_mem_arena=False,
+                    )
+                )
                 _cached_embeddings = QueryCachedEmbeddings(_embeddings)
                 _store = Chroma(
                     collection_name=COLLECTION,

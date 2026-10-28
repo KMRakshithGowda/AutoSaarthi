@@ -6,7 +6,7 @@ An evidence-led automotive buyer guide built around official brochures and docum
 
 - Three sections: AI Assistant, Knowledge Base, and Official Portals.
 - PDF and DOCX upload with brand, model, model year, brochure edition, market, variant, body type, fuel type, current/archive/unconfirmed India status, and optional official source URL. Local uploads are limited to 150 MB by default.
-- Layout-aware PDF text extraction, DOCX paragraph and table extraction, chunking, Hugging Face embeddings, and persistent Chroma storage.
+- Layout-aware PDF text extraction, DOCX paragraph and table extraction, chunking, the `all-MiniLM-L6-v2` embedding model through lightweight ONNX inference, and persistent Chroma storage.
 - Per-model MMR retrieval for multi-vehicle questions, with source filename and PDF page / DOCX paragraph locators returned to the interface.
 - Gemini question understanding on every chat request: corrects likely spelling/typing mistakes and resolves follow-up references before retrieval, using the selected brochures and indexed vehicle names as context.
 - Semantic search across indexed brochure passages in the Knowledge Base, with source filename and page/section locators.

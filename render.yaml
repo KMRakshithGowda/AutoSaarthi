@@ -22,6 +22,8 @@ services:
         value: /tmp/autosaarthi/library
       - key: HF_HOME
         value: /tmp/autosaarthi/huggingface
+      - key: FASTEMBED_CACHE_PATH
+        value: /opt/autosaarthi/fastembed
       - key: TESSERACT_CMD
         value: /usr/bin/tesseract
       - key: MAX_UPLOAD_MB
