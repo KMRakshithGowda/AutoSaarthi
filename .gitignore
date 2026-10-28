@@ -1,0 +1,16 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+Data/uploads/
+Data/sources/*.pdf
+Data/sources/*.docx
+Data/sources/**/*.pdf
+Data/sources/**/*.docx
+Data/manifest.tmp
+instance/
+.pytest_cache/
+
+.tmp/

@@ -1,0 +1,122 @@
+[
+  {"category":"Engine & performance","questions":[
+    {"id":"engine-type","prompt":"What engine options are listed for {car}?","vehicles":1},
+    {"id":"engine-displacement","prompt":"What is the engine displacement of {car}?","vehicles":1},
+    {"id":"engine-power","prompt":"What is the maximum power output of {car}?","vehicles":1},
+    {"id":"engine-torque","prompt":"What is the maximum torque of {car}?","vehicles":1},
+    {"id":"engine-cylinders","prompt":"How many cylinders does the engine in {car} have?","vehicles":1},
+    {"id":"engine-fuel","prompt":"Which fuel types are available for {car}?","vehicles":1},
+    {"id":"engine-performance","prompt":"What performance figures are listed for {car}?","vehicles":1},
+    {"id":"engine-acceleration","prompt":"What acceleration figure is stated for {car}?","vehicles":1},
+    {"id":"engine-emissions","prompt":"Which emissions standard is stated for {car}?","vehicles":1},
+    {"id":"engine-tank","prompt":"What is the fuel tank capacity of {car}?","vehicles":1}
+  ]},
+  {"category":"Dimensions & capacity","questions":[
+    {"id":"dimension-length","prompt":"What are the length, width, and height of {car}?","vehicles":1},
+    {"id":"dimension-wheelbase","prompt":"What is the wheelbase of {car}?","vehicles":1},
+    {"id":"dimension-clearance","prompt":"What ground clearance is stated for {car}?","vehicles":1},
+    {"id":"dimension-boot","prompt":"What is the boot capacity of {car}?","vehicles":1},
+    {"id":"dimension-seating","prompt":"How many people can {car} seat?","vehicles":1},
+    {"id":"dimension-weight","prompt":"What kerb weight is stated for {car}?","vehicles":1},
+    {"id":"dimension-turning","prompt":"What is the turning radius of {car}?","vehicles":1},
+    {"id":"dimension-tyres","prompt":"What tyre size is specified for {car}?","vehicles":1},
+    {"id":"dimension-wheel","prompt":"What wheel size is listed for {car}?","vehicles":1},
+    {"id":"dimension-space","prompt":"What passenger and luggage space details are given for {car}?","vehicles":1}
+  ]},
+  {"category":"Fuel, mileage & EV","questions":[
+    {"id":"efficiency-mileage","prompt":"What mileage or fuel-efficiency figure is listed for {car}?","vehicles":1},
+    {"id":"efficiency-range","prompt":"What driving range is stated for {car}?","vehicles":1},
+    {"id":"efficiency-battery","prompt":"What battery capacity is listed for {car}?","vehicles":1},
+    {"id":"efficiency-charge-time","prompt":"How long does {car} take to charge, according to the brochure?","vehicles":1},
+    {"id":"efficiency-fast-charge","prompt":"What fast-charging details are given for {car}?","vehicles":1},
+    {"id":"efficiency-ac-charge","prompt":"What AC charging details are given for {car}?","vehicles":1},
+    {"id":"efficiency-connector","prompt":"Which charging connector is listed for {car}?","vehicles":1},
+    {"id":"efficiency-regeneration","prompt":"What regenerative-braking settings are available in {car}?","vehicles":1},
+    {"id":"efficiency-modes","prompt":"Which drive or efficiency modes are listed for {car}?","vehicles":1},
+    {"id":"efficiency-tank","prompt":"What fuel tank capacity and fuel economy are stated for {car}?","vehicles":1}
+  ]},
+  {"category":"Transmission & drivetrain","questions":[
+    {"id":"drive-transmission","prompt":"Which transmission options are available for {car}?","vehicles":1},
+    {"id":"drive-gears","prompt":"How many gears does {car} have?","vehicles":1},
+    {"id":"drive-type","prompt":"Is {car} front-wheel drive, rear-wheel drive, or all-wheel drive?","vehicles":1},
+    {"id":"drive-paddles","prompt":"Does the brochure list paddle shifters for {car}?","vehicles":1},
+    {"id":"drive-modes","prompt":"Which driving modes are available in {car}?","vehicles":1},
+    {"id":"drive-terrain","prompt":"Which terrain or off-road modes are listed for {car}?","vehicles":1},
+    {"id":"drive-awd","prompt":"What four-wheel-drive or all-wheel-drive features are listed for {car}?","vehicles":1},
+    {"id":"drive-hill","prompt":"What hill-start or hill-descent systems are listed for {car}?","vehicles":1},
+    {"id":"drive-suspension","prompt":"What suspension setup is specified for {car}?","vehicles":1},
+    {"id":"drive-brakes","prompt":"What brake type is specified for {car}?","vehicles":1}
+  ]},
+  {"category":"Safety","questions":[
+    {"id":"safety-airbags","prompt":"How many airbags are listed for {car}, and which types?","vehicles":1},
+    {"id":"safety-abs","prompt":"What ABS, EBD, or brake-assist systems are listed for {car}?","vehicles":1},
+    {"id":"safety-stability","prompt":"What stability and traction-control systems are listed for {car}?","vehicles":1},
+    {"id":"safety-adas","prompt":"Which ADAS features are listed for {car}?","vehicles":1},
+    {"id":"safety-camera","prompt":"What camera and parking-assistance features are listed for {car}?","vehicles":1},
+    {"id":"safety-sensors","prompt":"What parking sensors are provided in {car}?","vehicles":1},
+    {"id":"safety-tpms","prompt":"Does {car} have a tyre-pressure monitoring system?","vehicles":1},
+    {"id":"safety-isofix","prompt":"What child-seat or ISOFIX provisions are listed for {car}?","vehicles":1},
+    {"id":"safety-body","prompt":"What body structure or occupant-protection details are stated for {car}?","vehicles":1},
+    {"id":"safety-security","prompt":"What security and anti-theft features are listed for {car}?","vehicles":1}
+  ]},
+  {"category":"Interior & comfort","questions":[
+    {"id":"comfort-seats","prompt":"What seat adjustment and comfort features are listed for {car}?","vehicles":1},
+    {"id":"comfort-ventilation","prompt":"Does {car} offer ventilated seats?","vehicles":1},
+    {"id":"comfort-climate","prompt":"What air-conditioning or climate-control features are listed for {car}?","vehicles":1},
+    {"id":"comfort-rear-ac","prompt":"Does {car} have rear AC vents?","vehicles":1},
+    {"id":"comfort-sunroof","prompt":"What sunroof options are listed for {car}?","vehicles":1},
+    {"id":"comfort-upholstery","prompt":"What interior upholstery and trim are described for {car}?","vehicles":1},
+    {"id":"comfort-rear-seat","prompt":"What rear-seat comfort and folding features are listed for {car}?","vehicles":1},
+    {"id":"comfort-storage","prompt":"What cabin storage features are listed for {car}?","vehicles":1},
+    {"id":"comfort-keyless","prompt":"Does {car} include keyless entry and push-button start?","vehicles":1},
+    {"id":"comfort-tailgate","prompt":"What boot or tailgate convenience features are listed for {car}?","vehicles":1}
+  ]},
+  {"category":"Infotainment & technology","questions":[
+    {"id":"tech-screen","prompt":"What infotainment screen size is listed for {car}?","vehicles":1},
+    {"id":"tech-cluster","prompt":"What instrument-cluster display is provided in {car}?","vehicles":1},
+    {"id":"tech-connectivity","prompt":"What Apple CarPlay or Android Auto support is listed for {car}?","vehicles":1},
+    {"id":"tech-audio","prompt":"What audio system and speaker details are listed for {car}?","vehicles":1},
+    {"id":"tech-wireless","prompt":"Does {car} have wireless phone charging?","vehicles":1},
+    {"id":"tech-usb","prompt":"What USB ports or charging outlets are listed for {car}?","vehicles":1},
+    {"id":"tech-connected","prompt":"What connected-car services are listed for {car}?","vehicles":1},
+    {"id":"tech-voice","prompt":"What voice-control or voice-assistant features are listed for {car}?","vehicles":1},
+    {"id":"tech-navigation","prompt":"What navigation features are included in {car}?","vehicles":1},
+    {"id":"tech-ota","prompt":"Does the brochure mention over-the-air updates for {car}?","vehicles":1}
+  ]},
+  {"category":"Exterior & equipment","questions":[
+    {"id":"exterior-headlights","prompt":"What headlight types and features are listed for {car}?","vehicles":1},
+    {"id":"exterior-drl","prompt":"What daytime-running lights or exterior lighting does {car} have?","vehicles":1},
+    {"id":"exterior-tail-lamps","prompt":"What tail-lamp design or lighting features are listed for {car}?","vehicles":1},
+    {"id":"exterior-alloys","prompt":"What alloy-wheel options are listed for {car}?","vehicles":1},
+    {"id":"exterior-mirrors","prompt":"What outside-mirror features are listed for {car}?","vehicles":1},
+    {"id":"exterior-wipers","prompt":"What wiper and rain-sensing features are listed for {car}?","vehicles":1},
+    {"id":"exterior-roof","prompt":"What roof rails or roof features are listed for {car}?","vehicles":1},
+    {"id":"exterior-colours","prompt":"Which exterior colours are shown for {car}?","vehicles":1},
+    {"id":"exterior-glass","prompt":"What glass, tint, or visibility features are listed for {car}?","vehicles":1},
+    {"id":"exterior-spare","prompt":"What spare wheel or tyre equipment is listed for {car}?","vehicles":1}
+  ]},
+  {"category":"Variants & brochure details","questions":[
+    {"id":"variant-list","prompt":"Which variants of {car} are listed in the brochure?","vehicles":1},
+    {"id":"variant-engines","prompt":"Which variants of {car} get each engine option?","vehicles":1},
+    {"id":"variant-safety","prompt":"How do the safety features differ between {car} variants?","vehicles":1},
+    {"id":"variant-features","prompt":"Which {car} variant includes the most features listed in the brochure?","vehicles":1},
+    {"id":"variant-sunroof","prompt":"Which {car} variants have a sunroof?","vehicles":1},
+    {"id":"variant-wheels","prompt":"How do the wheel options differ across {car} variants?","vehicles":1},
+    {"id":"variant-colours","prompt":"Are any exterior colours limited to particular {car} variants?","vehicles":1},
+    {"id":"variant-price","prompt":"Does the supplied brochure state prices for {car}?","vehicles":1},
+    {"id":"variant-warranty","prompt":"What warranty details are stated for {car}?","vehicles":1},
+    {"id":"variant-standard","prompt":"Which features are standard across all {car} variants?","vehicles":1}
+  ]},
+  {"category":"Compare two cars","questions":[
+    {"id":"compare-engine","prompt":"Compare the engine options and power of {car1} and {car2}.","vehicles":2},
+    {"id":"compare-torque","prompt":"Compare the torque and performance figures of {car1} and {car2}.","vehicles":2},
+    {"id":"compare-dimensions","prompt":"Compare the dimensions and wheelbase of {car1} and {car2}.","vehicles":2},
+    {"id":"compare-boot","prompt":"Compare the boot capacity and seating of {car1} and {car2}.","vehicles":2},
+    {"id":"compare-mileage","prompt":"Compare the fuel-efficiency figures listed for {car1} and {car2}.","vehicles":2},
+    {"id":"compare-ev-range","prompt":"Compare the battery capacity and driving range of {car1} and {car2}.","vehicles":2},
+    {"id":"compare-charge","prompt":"Compare the charging options and times listed for {car1} and {car2}.","vehicles":2},
+    {"id":"compare-safety","prompt":"Compare the safety features listed for {car1} and {car2}.","vehicles":2},
+    {"id":"compare-comfort","prompt":"Compare the comfort and interior features listed for {car1} and {car2}.","vehicles":2},
+    {"id":"compare-tech","prompt":"Compare the infotainment and connectivity features of {car1} and {car2}.","vehicles":2}
+  ]}
+]

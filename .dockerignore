@@ -1,0 +1,9 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.tmp/
+.pytest_cache/
+Data/manifest.tmp
+Data/uploads/
+Data/sources/

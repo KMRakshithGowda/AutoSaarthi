@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Hyundai India",
+    "group": "Manufacturer",
+    "description": "Explore current Hyundai cars and their official brochures.",
+    "url": "https://www.hyundai.com/in/en/find-a-car"
+  },
+  {
+    "name": "Tata Motors",
+    "group": "Manufacturer",
+    "description": "Visit Tata Motors Passenger Vehicles for its current lineup.",
+    "url": "https://www.tatamotors.com/"
+  },
+  {
+    "name": "Maruti Suzuki Arena",
+    "group": "Manufacturer",
+    "description": "Explore the Arena passenger vehicle range.",
+    "url": "https://www.marutisuzuki.com/arena"
+  },
+  {
+    "name": "Maruti Suzuki Nexa",
+    "group": "Manufacturer",
+    "description": "Explore the Nexa passenger vehicle range.",
+    "url": "https://www.nexaexperience.com/"
+  },
+  {
+    "name": "Mahindra Auto",
+    "group": "Manufacturer",
+    "description": "Explore Mahindra passenger vehicles and SUVs.",
+    "url": "https://auto.mahindra.com/suv"
+  },
+  {
+    "name": "Toyota India",
+    "group": "Manufacturer",
+    "description": "Explore Toyota India models and official information.",
+    "url": "https://www.toyotabharat.com/"
+  },
+  {
+    "name": "Honda Cars India",
+    "group": "Manufacturer",
+    "description": "Explore Honda Cars India models and brochures.",
+    "url": "https://www.hondacarindia.com/"
+  },
+  {
+    "name": "Volkswagen India",
+    "group": "Manufacturer",
+    "description": "Explore Volkswagen India models and brochures.",
+    "url": "https://www.volkswagen.co.in/en.html"
+  },
+  {
+    "name": "Škoda India",
+    "group": "Manufacturer",
+    "description": "Explore the current Škoda India model range.",
+    "url": "https://www.skoda-auto.co.in/models/range"
+  },
+  {
+    "name": "Jeep India",
+    "group": "Manufacturer",
+    "description": "Explore the official Jeep India vehicle lineup and specifications.",
+    "url": "https://www.jeep-india.com/vehicle-lineup.html"
+  },
+  {
+    "name": "Kia India",
+    "group": "Manufacturer",
+    "description": "Explore Kia India models and official brochure downloads.",
+    "url": "https://www.kia.com/in/home.html"
+  },
+  {
+    "name": "Renault India",
+    "group": "Manufacturer",
+    "description": "Explore Renault India models and official brochures.",
+    "url": "https://www.renault.co.in/cars.html"
+  },
+  {
+    "name": "MG Motor India",
+    "group": "Manufacturer",
+    "description": "Explore MG Motor India cars and official brochures.",
+    "url": "https://www.mgmotor.co.in/"
+  },
+  {
+    "name": "Bharat NCAP",
+    "group": "Safety & Government",
+    "description": "Check published Indian vehicle safety assessment results.",
+    "url": "https://www.bncap.in/vehicle-safety-ratings/"
+  },
+  {
+    "name": "MoRTH Parivahan Sewa",
+    "group": "Safety & Government",
+    "description": "Official Ministry of Road Transport and Highways vehicle services portal.",
+    "url": "https://parivahan.gov.in/parivahan/"
+  }
+]

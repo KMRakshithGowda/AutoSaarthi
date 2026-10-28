@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#07111a">
+  <title>AutoSaarthi India — Vehicle Guide</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=render-free-index-passages-20261029">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="AutoSaarthi home">
+        <span class="brand-mark">A</span>
+        <span><strong>AutoSaarthi</strong><small>India · Evidence-led car guide</small></span>
+      </a>
+    </header>
+
+    <nav class="tabs" aria-label="Main sections">
+      <button class="tab active" data-tab="assistant"><span class="tab-icon">◉</span><span>AI Assistant</span></button>
+      <button class="tab" data-tab="knowledge"><span class="tab-icon">▤</span><span>Knowledge Base</span></button>
+      <button class="tab" data-tab="portals"><span class="tab-icon">⌂</span><span>Official Portals</span></button>
+    </nav>
+
+    <main>
+      <section class="view active" id="view-assistant">
+        <div class="assistant-layout">
+          <aside class="side-panel history-panel">
+            <div class="history-heading"><div><p class="eyebrow">YOUR SPACE</p><h2>Chat history</h2></div><button class="new-chat-button" id="new-chat" type="button" title="Start a new chat">＋</button></div>
+            <p class="history-caption">Saved in this browser</p>
+            <div id="chat-history" class="chat-history-list" aria-label="Saved conversations"></div>
+            <div class="history-note">Your chats stay on this device and browser.</div>
+          </aside>
+
+          <div class="chat-panel">
+            <div class="chat-heading"><div><p>Ask about specifications, compare models, or find which variant has the feature you need.</p></div><span class="model-chip">BROCHURE-GROUNDED · MMR SEARCH</span></div>
+            <details class="question-library" id="question-library">
+              <summary><span>Browse predefined brochure questions</span><span class="question-bank-count" id="question-bank-count">100 questions</span></summary>
+              <div class="question-bank-body">
+                <div class="question-bank-controls">
+                  <label class="searchbox"><span>⌕</span><input id="question-bank-search" type="search" placeholder="Search 100 question starters" aria-label="Search predefined questions"></label>
+                  <select id="question-bank-category" aria-label="Filter questions by category"><option value="">All categories</option></select>
+                </div>
+                <p class="question-bank-help" id="question-bank-help">Select one car in Vehicle Coverage first, or select two cars for a comparison. These questions search the built-in brochure library.</p>
+                <div class="question-bank-list" id="question-bank-list" role="list"></div>
+              </div>
+            </details>
+            <div id="selected-brochures" class="selected-brochures" hidden aria-live="polite"></div>
+            <div class="messages" id="messages" aria-live="polite"></div>
+            <form class="composer" id="chat-form">{% if uploads_enabled %}<button class="upload-button" id="composer-upload" type="button" aria-label="Upload a PDF or DOCX" title="Upload a PDF or DOCX">＋</button>{% endif %}<textarea id="question" rows="1" placeholder="Ask about a car or compare two models…" required></textarea><button class="send-button" type="submit" aria-label="Send question">↑</button></form>
+          </div>
+
+          <aside class="tool-rail reference-panel">
+            <div class="rail-heading"><p class="eyebrow">YOUR REFERENCE LIBRARY</p><div class="reference-title"><h2>Vehicle coverage</h2><span class="count-pill" id="car-count">0 cars</span></div><p>Click a car name to attach its brochure. Select two or more to compare.</p></div>
+            <label class="searchbox"><span>⌕</span><input id="library-search" type="search" placeholder="Find a brand or model"></label>
+            <div id="mini-library" class="mini-library"><div class="empty-state compact">Loading brochures…</div></div>
+            <div class="rail-evidence"><span class="rail-orbit">✳</span><div><small>ANSWER MODE</small><strong>Source first</strong><p>Answers use supplied brochures; missing details stay unconfirmed.</p></div></div>
+            {% if uploads_enabled %}<button class="button button-primary full rail-upload" id="open-upload" type="button">＋ Add a vehicle brochure</button>{% else %}<p class="upload-cloud-note">Cloud preview uses the preloaded brochure index. Live uploads are turned off.</p>{% endif %}
+            <button class="rail-link" type="button" data-tab-link="knowledge">Browse all documents <span>↗</span></button>
+            <button class="rail-link" type="button" data-tab-link="portals">Open official brand portals <span>↗</span></button>
+          </aside>
+        </div>
+      </section>
+
+      <section class="view" id="view-knowledge">
+        <div class="page-heading row-heading"><div><p class="eyebrow">SEARCH THE INDEX</p><h1>Knowledge Base</h1><p>Search extracted brochure passages from the preloaded Chroma index. Results show the matching text and its page or section.</p></div></div>
+        <form class="kb-passage-search" id="kb-search-form"><label class="searchbox wide"><span>⌕</span><input id="kb-search" type="search" placeholder="Search brochure text, specifications, or features" aria-label="Search indexed brochure passages" required></label><button class="button button-primary" type="submit" id="kb-search-button">Search passages</button></form>
+        <p class="kb-search-status" id="kb-search-status" role="status" aria-live="polite">Search the preloaded brochure text to see matching passages.</p>
+        <div class="kb-result-list" id="kb-results"></div>
+        <div class="kb-catalog-heading"><h2 class="section-title">Indexed brochures</h2><span class="count-pill" id="kb-document-count">Loading…</span></div>
+        <p class="small-muted kb-catalog-note">This free preview includes indexed text for answers; original PDF files are not hosted here.</p>
+        <div class="document-grid" id="document-grid"><div class="empty-state">Loading the preloaded brochure index…</div></div>
+      </section>
+
+      <section class="view" id="view-portals">
+        <div class="page-heading"><p class="eyebrow">GO TO THE SOURCE</p><h1>Official portals</h1><p>These links take you to manufacturer and public safety websites. They open in a new tab.</p></div>
+        <h2 class="section-title">Vehicle manufacturers</h2><div class="portal-grid" id="manufacturer-portals"></div>
+        <h2 class="section-title spaced">Safety and government</h2><div class="portal-grid" id="government-portals"></div>
+        <div class="portal-disclaimer"><span>ⓘ</span><p>Portal links are shortcuts. AutoSaarthi does not automatically fetch or index their website content; the knowledge base uses the files you provide.</p></div>
+      </section>
+    </main>
+    <footer class="footer"><span>AutoSaarthi India · Student capstone project</span><span>Vehicle information is limited to the documents provided.</span></footer>
+  </div>
+
+  {% if uploads_enabled %}<dialog id="upload-dialog" class="upload-dialog"><form id="upload-form" enctype="multipart/form-data"><div class="dialog-head"><div><p class="eyebrow">ATTACH A SOURCE</p><h2>Add a brochure to chat</h2></div><button class="icon-button" type="button" id="close-upload" aria-label="Close">×</button></div><p class="dialog-copy">Choose an official PDF or DOCX. AutoSaarthi reads it, then attaches it to this chat so you can ask questions. Scanned PDFs can be processed with local OCR when available.</p><label class="file-drop" for="brochure-file"><span class="upload-icon">↑</span><strong id="file-label">Choose a PDF or DOCX</strong><small>Up to 150 MB locally · no details to fill in</small><input id="brochure-file" name="file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required></label><div class="upload-status" id="upload-status" role="status"></div><div class="dialog-actions"><button class="button button-quiet" type="button" id="cancel-upload">Cancel</button><button class="button button-primary" type="submit">Add to chat</button></div></form></dialog>{% endif %}
+
+  <script src="{{ url_for('static', filename='app.js') }}?v=render-free-index-passages-20261029"></script>
+</body>
+</html>
+

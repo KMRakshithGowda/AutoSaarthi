@@ -1,0 +1,15 @@
+Flask>=3.1,<4
+python-dotenv>=1.1,<2
+openai>=1.90,<3
+langchain-chroma>=0.2,<2
+langchain-huggingface>=0.3,<2
+langchain-text-splitters>=0.3,<2
+sentence-transformers>=4.1,<6
+pypdf>=5.6,<7
+pypdfium2>=4.30,<6
+pytesseract>=0.3.13,<1
+python-docx>=1.1,<2
+Pillow>=10,<13
+waitress>=3,<4
+gunicorn>=23,<24; sys_platform != "win32"
+

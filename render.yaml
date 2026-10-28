@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: autosaarthi-india
+    runtime: docker
+    plan: free
+    region: singapore
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /api/overview
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.5-flash-lite
+      - key: CHROMA_DIR
+        value: chroma_db
+      - key: UPLOAD_DIR
+        value: /tmp/autosaarthi/uploads
+      - key: MANIFEST_PATH
+        value: Data/manifest.json
+      - key: SOURCE_DIR
+        value: /tmp/autosaarthi/library
+      - key: HF_HOME
+        value: /tmp/autosaarthi/huggingface
+      - key: TESSERACT_CMD
+        value: /usr/bin/tesseract
+      - key: MAX_UPLOAD_MB
+        value: "150"
+      - key: ENABLE_UPLOADS
+        value: "false"
