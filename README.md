@@ -15,17 +15,8 @@ AutoSaarthi helps buyers ask questions about vehicles and compare models using i
 
 ## How it works
 
-```mermaid
-flowchart LR
-    A[Official brochures] --> B[Text extraction and chunking]
-    B --> C[MiniLM embeddings]
-    C --> D[(ChromaDB index)]
-    E[User question] --> F[Gemini question understanding]
-    F --> G[Vehicle-scoped retrieval]
-    D --> G
-    G --> H[Gemini grounded answer]
-    H --> I[Answer with source locations]
-```
+1. **Index brochures:** PDF/DOCX text is extracted, split into vehicle-tagged chunks, embedded with MiniLM, and stored in ChromaDB.
+2. **Answer questions:** Gemini clarifies spelling and references when needed; AutoSaarthi retrieves passages for the requested vehicle; Gemini drafts an answer from those passages, and the app shows their source locations.
 
 ## Technology
 
