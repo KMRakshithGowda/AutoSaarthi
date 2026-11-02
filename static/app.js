@@ -226,20 +226,8 @@ function appendMessage(role, text, sources=[]) {
   const body=document.createElement('div'); body.className='answer-body';
   if (role === 'user') body.textContent=text; else renderAnswer(body,text);
   bubble.append(body);
-  const visibleSources = sources.filter(source => source.source_type !== 'youtube_transcript');
-  if (role !== 'user' && visibleSources.length) {
-    const list=document.createElement('div'); list.className='message-sources';
-    visibleSources.forEach(source=>{
-      const link=document.createElement('a'); link.className='source-chip';
-      const kind=source.source_type==='buyer_guide'?'Buyer guide':source.source_type==='expert_user_reviews'?'Expert & user reviews':'Official brochure';
-      const locator=source.locator?` · ${source.locator}`:'';
-      link.textContent=`${kind} · ${source.filename||'Source'}${locator}`;
-      if(source.doc_id){const page=(String(source.locator||'').match(/page\s+(\d+)/i)||[])[1];link.href=`/api/documents/${encodeURIComponent(source.doc_id)}/file${page?`#page=${page}`:''}`;}
-      else if(source.official_source_url)link.href=source.official_source_url;
-      link.target='_blank';link.rel='noopener noreferrer';list.append(link);
-    });
-    bubble.append(list);
-  }
+  // Source passages remain in the API response and retrieval context, but the
+  // assistant chat intentionally shows only the answer text.
   article.append(avatar,bubble); $('#messages').append(article); $('#messages').scrollTop=$('#messages').scrollHeight;
 }
 
