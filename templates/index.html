@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#100e0b">
   <title>AutoSaarthi India — Vehicle Guide</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=autosaarthi-review-dataset-20261102">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=autosaarthi-free-chat-20261102">
 </head>
 <body>
   <div class="app-shell">
@@ -33,18 +33,7 @@
           </aside>
 
           <div class="chat-panel">
-            <div class="chat-heading"><div><p>Ask about specifications, compare models, or find which variant has the feature you need.</p></div><span class="model-chip">BROCHURE-GROUNDED · MMR SEARCH</span></div>
-            <details class="question-library" id="question-library">
-              <summary><span>Browse predefined brochure questions</span><span class="question-bank-count" id="question-bank-count">100 questions</span></summary>
-              <div class="question-bank-body">
-                <div class="question-bank-controls">
-                  <label class="searchbox"><span>⌕</span><input id="question-bank-search" type="search" placeholder="Search 100 question starters" aria-label="Search predefined questions"></label>
-                  <select id="question-bank-category" aria-label="Filter questions by category"><option value="">All categories</option></select>
-                </div>
-                <p class="question-bank-help" id="question-bank-help">Select one car in Vehicle Coverage first, or select two cars for a comparison. These questions search the built-in brochure library.</p>
-                <div class="question-bank-list" id="question-bank-list" role="list"></div>
-              </div>
-            </details>
+            <div class="chat-heading"><div><p>Ask freely about specifications, compare models, or find which variant has the feature you need.</p></div><span class="model-chip">DOCUMENT-GROUNDED · MMR SEARCH</span></div>
             <div id="selected-brochures" class="selected-brochures" hidden aria-live="polite"></div>
             <div class="messages" id="messages" aria-live="polite"></div>
             <form class="composer" id="chat-form">{% if uploads_enabled %}<button class="upload-button" id="composer-upload" type="button" aria-label="Upload a PDF or DOCX" title="Upload a PDF or DOCX">＋</button>{% endif %}<textarea id="question" rows="1" placeholder="Ask about a car or compare two models…" required></textarea><button class="send-button" type="submit" aria-label="Send question">↑</button></form>
@@ -54,8 +43,8 @@
             <div class="rail-heading"><p class="eyebrow">YOUR REFERENCE LIBRARY</p><div class="reference-title"><h2>Vehicle coverage</h2><span class="count-pill" id="car-count">0 cars</span></div><p>Click a car name to attach its brochure. Select two or more to compare.</p></div>
             <label class="searchbox"><span>⌕</span><input id="library-search" type="search" placeholder="Find a brand or model"></label>
             <div id="mini-library" class="mini-library"><div class="empty-state compact">Loading brochures…</div></div>
-            <div class="rail-evidence"><span class="rail-orbit">✳</span><div><small>ANSWER MODE</small><strong>Source first</strong><p>Answers use supplied brochures; missing details stay unconfirmed.</p></div></div>
-            {% if uploads_enabled %}<button class="button button-primary full rail-upload" id="open-upload" type="button">＋ Add a vehicle brochure</button>{% else %}<p class="upload-cloud-note">Cloud preview uses the preloaded brochure index. Live uploads are turned off.</p>{% endif %}
+            <div class="rail-evidence"><span class="rail-orbit">✳</span><div><small>ANSWER MODE</small><strong>Source first</strong><p>Answers search the supplied vehicle documents.</p></div></div>
+            {% if uploads_enabled %}<button class="button button-primary full rail-upload" id="open-upload" type="button">＋ Add a vehicle brochure</button>{% else %}<p class="upload-cloud-note">Cloud preview uses the preloaded source index. Live uploads are turned off.</p>{% endif %}
             <button class="rail-link" type="button" data-tab-link="knowledge">Browse all documents <span>↗</span></button>
             <button class="rail-link" type="button" data-tab-link="portals">Open official brand portals <span>↗</span></button>
           </aside>
@@ -63,13 +52,13 @@
       </section>
 
       <section class="view" id="view-knowledge">
-        <div class="page-heading row-heading"><div><p class="eyebrow">SEARCH THE INDEX</p><h1>Knowledge Base</h1><p>Search extracted brochure passages from the preloaded Chroma index. Results show the matching text and its page or section.</p></div></div>
-        <form class="kb-passage-search" id="kb-search-form"><label class="searchbox wide"><span>⌕</span><input id="kb-search" type="search" placeholder="Search brochure text, specifications, or features" aria-label="Search indexed brochure passages" required></label><button class="button button-primary" type="submit" id="kb-search-button">Search passages</button></form>
-        <p class="kb-search-status" id="kb-search-status" role="status" aria-live="polite">Search the preloaded brochure text to see matching passages.</p>
+        <div class="page-heading row-heading"><div><p class="eyebrow">SEARCH THE INDEX</p><h1>Knowledge Base</h1><p>Search all supplied brochures, transcripts, and vehicle-guide documents. Results show matching passages and their source locations.</p></div></div>
+        <form class="kb-passage-search" id="kb-search-form"><label class="searchbox wide"><span>⌕</span><input id="kb-search" type="search" placeholder="Search source text, specifications, or features" aria-label="Search indexed source passages" required></label><button class="button button-primary" type="submit" id="kb-search-button">Search passages</button></form>
+        <p class="kb-search-status" id="kb-search-status" role="status" aria-live="polite">Search the preloaded source text to see matching passages.</p>
         <div class="kb-result-list" id="kb-results"></div>
-        <div class="kb-catalog-heading"><h2 class="section-title">Indexed brochures</h2><span class="count-pill" id="kb-document-count">Loading…</span></div>
-        <p class="small-muted kb-catalog-note">This free preview includes indexed text for answers; original PDF files are not hosted here.</p>
-        <div class="document-grid" id="document-grid"><div class="empty-state">Loading the preloaded brochure index…</div></div>
+        <div class="kb-catalog-heading"><h2 class="section-title">Indexed sources</h2><span class="count-pill" id="kb-document-count">Loading…</span></div>
+        <p class="small-muted kb-catalog-note">The index includes the text used for answers; original PDF files may not be hosted in the preview.</p>
+        <div class="document-grid" id="document-grid"><div class="empty-state">Loading the preloaded source index…</div></div>
       </section>
 
       <section class="view" id="view-portals">
@@ -84,7 +73,7 @@
 
   {% if uploads_enabled %}<dialog id="upload-dialog" class="upload-dialog"><form id="upload-form" enctype="multipart/form-data"><div class="dialog-head"><div><p class="eyebrow">ATTACH A SOURCE</p><h2>Add a brochure to chat</h2></div><button class="icon-button" type="button" id="close-upload" aria-label="Close">×</button></div><p class="dialog-copy">Choose an official PDF or DOCX. AutoSaarthi reads it, then attaches it to this chat so you can ask questions. Scanned PDFs can be processed with local OCR when available.</p><label class="file-drop" for="brochure-file"><span class="upload-icon">↑</span><strong id="file-label">Choose a PDF or DOCX</strong><small>Up to 150 MB locally · no details to fill in</small><input id="brochure-file" name="file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required></label><div class="upload-status" id="upload-status" role="status"></div><div class="dialog-actions"><button class="button button-quiet" type="button" id="cancel-upload">Cancel</button><button class="button button-primary" type="submit">Add to chat</button></div></form></dialog>{% endif %}
 
-  <script src="{{ url_for('static', filename='app.js') }}?v=autosaarthi-review-dataset-20261102"></script>
+  <script src="{{ url_for('static', filename='app.js') }}?v=autosaarthi-free-chat-20261102"></script>
 </body>
 </html>
 

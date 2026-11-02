@@ -1,6 +1,6 @@
 const $ = (q) => document.querySelector(q);
 const $$ = (q) => [...document.querySelectorAll(q)];
-const state = { documents: [], portals: [], chats: [], currentChatId: null, selectedVehicles: [], questionBank: [], predefinedQuestion: null };
+const state = { documents: [], portals: [], chats: [], currentChatId: null, selectedVehicles: [] };
 const FALLBACK = 'Sorry, I have no information about it.';
 const CHAT_STORAGE_KEY = 'autosaarthi.chat-history.v1';
 
@@ -104,7 +104,6 @@ $('#mini-library').addEventListener('click', event => {
   }
   renderLibrary($('#library-search').value);
   renderSelectedBrochures();
-  renderQuestionBank();
 });
 $('#selected-brochures').addEventListener('click', event => {
   const remove = event.target.closest('[data-remove-brochure]');
@@ -112,68 +111,7 @@ $('#selected-brochures').addEventListener('click', event => {
   state.selectedVehicles = state.selectedVehicles.filter(vehicle => vehicle.key !== remove.dataset.removeBrochure);
   renderLibrary($('#library-search').value);
   renderSelectedBrochures();
-  renderQuestionBank();
 });
-
-function renderQuestionBank() {
-  const list = $('#question-bank-list');
-  if (!list) return;
-  const term = ($('#question-bank-search')?.value || '').trim().toLowerCase();
-  const category = $('#question-bank-category')?.value || '';
-  const cars = state.selectedVehicles
-    .filter(vehicle => state.documents.some(doc => doc.built_in && doc.brand === vehicle.brand && doc.model === vehicle.model))
-    .map(vehicle => `${vehicle.brand} ${vehicle.model}`);
-  const questions = state.questionBank.flatMap(group => (group.questions || []).map(question => ({...question, category:group.category})))
-    .filter(question => (!category || question.category === category) && (!term || `${question.category} ${question.prompt}`.toLowerCase().includes(term)));
-  list.replaceChildren();
-  if (!questions.length) {
-    const empty = document.createElement('div'); empty.className = 'question-bank-empty';
-    empty.textContent = state.questionBank.length ? 'No question starters match that search.' : 'Question starters are loading…'; list.append(empty); return;
-  }
-  questions.forEach(question => {
-    const button = document.createElement('button'); button.type = 'button'; button.className = 'question-bank-item'; button.setAttribute('role','listitem');
-    const preview = question.prompt.replace('{car1}', cars[0] || 'first car').replace('{car2}', cars[1] || 'second car').replace('{car}', cars[0] || 'your selected car');
-    const enoughCars = cars.length >= question.vehicles;
-    button.disabled = !enoughCars;
-    button.title = enoughCars ? 'Use this question' : `Select ${question.vehicles} ${question.vehicles === 1 ? 'car' : 'cars'} in Vehicle Coverage first`;
-    const label = document.createElement('span'); label.className = 'question-bank-category-label'; label.textContent = question.category;
-    const text = document.createElement('span'); text.className = 'question-bank-prompt'; text.textContent = preview;
-    button.append(label,text);
-    button.addEventListener('click', () => {
-      if (!enoughCars) {
-        $('#question-bank-help').textContent = `Select ${question.vehicles} ${question.vehicles === 1 ? 'car' : 'cars'} from Vehicle Coverage, then choose this question.`;
-        return;
-      }
-      const prompt = question.prompt.replace('{car1}', cars[0] || '').replace('{car2}', cars[1] || '').replace('{car}', cars[0] || '');
-      const field = $('#question'); field.value = prompt; field.focus();
-      state.predefinedQuestion = {id:question.id,text:prompt};
-      $('#question-bank-help').textContent = 'Ready. This question will search matching brochures from the built-in library.';
-      $('#question-library').open = false;
-      $('#chat-form').requestSubmit();
-    });
-    list.append(button);
-  });
-}
-
-async function loadQuestionBank() {
-  const help = $('#question-bank-help');
-  try {
-    const response = await fetch('/api/question-bank');
-    if (!response.ok) throw new Error('Could not load the question starters.');
-    state.questionBank = await response.json();
-    const categorySelect = $('#question-bank-category');
-    state.questionBank.forEach(group => {
-      const option = document.createElement('option'); option.value = group.category; option.textContent = group.category; categorySelect.append(option);
-    });
-    const count = state.questionBank.reduce((total, group) => total + (group.questions || []).length, 0);
-    $('#question-bank-count').textContent = `${count} ready-made questions`;
-    $('#question-bank-search').placeholder = `Search ${count} question starters`;
-    help.textContent = 'Select one car in Vehicle Coverage first, or select two cars for a comparison. These questions search the built-in brochure library.';
-    renderQuestionBank();
-  } catch (error) {
-    help.textContent = error.message;
-  }
-}
 
 function setTab(name) {
   $$('.tab').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
@@ -217,7 +155,7 @@ function renderKnowledge() {
     const subtitle = [d.filename, edition ? `Brochure ${edition}` : '', `${d.chunks} indexed passages`].filter(Boolean).join(' · ');
     const tags = knownTags(d);
     return `<article class="document-card"><div class="doc-top"><span class="doc-brand">${escapeHtml(d.brand)}</span><span class="doc-type">${escapeHtml((d.file_type || 'document').toUpperCase())} · indexed</span></div><h3>${escapeHtml(title)}</h3><p>${escapeHtml(subtitle)}</p>${tags.length ? `<div class="tag-row">${tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}</div>` : ''}<span class="kb-indexed-label">Searchable text available in this index</span></article>`;
-  }).join('') : '<div class="empty-state">The preloaded brochure index is not available.</div>';
+  }).join('') : '<div class="empty-state">The preloaded source index is not available.</div>';
 }
 
 async function searchKnowledgeBase(event) {
@@ -226,7 +164,7 @@ async function searchKnowledgeBase(event) {
   const status = $('#kb-search-status');
   const results = $('#kb-results');
   if (!query) return;
-  status.textContent = 'Searching indexed brochure passages…';
+  status.textContent = 'Searching indexed source passages…';
   results.replaceChildren();
   $('#kb-search-button').disabled = true;
   try {
@@ -241,7 +179,7 @@ async function searchKnowledgeBase(event) {
       status.textContent = 'No matching passages were found in the preloaded index.';
       return;
     }
-    status.textContent = `${matches.length} matching passages from the preloaded brochure index.`;
+    status.textContent = `${matches.length} matching passages from the preloaded source index.`;
     results.innerHTML = matches.map(match => {
       const title = [match.brand, match.model, knownValue(match.year)].filter(Boolean).join(' ');
       const locator = [match.filename, match.locator, knownValue(match.market) ? `Market: ${match.market}` : ''].filter(Boolean).join(' · ');
@@ -288,11 +226,12 @@ function appendMessage(role, text, sources=[]) {
   const body=document.createElement('div'); body.className='answer-body';
   if (role === 'user') body.textContent=text; else renderAnswer(body,text);
   bubble.append(body);
-  if (role !== 'user' && sources.length) {
+  const visibleSources = sources.filter(source => source.source_type !== 'youtube_transcript');
+  if (role !== 'user' && visibleSources.length) {
     const list=document.createElement('div'); list.className='message-sources';
-    sources.forEach(source=>{
+    visibleSources.forEach(source=>{
       const link=document.createElement('a'); link.className='source-chip';
-      const kind=source.source_type==='youtube_transcript'?'YouTube review':source.source_type==='buyer_guide'?'Buyer guide':source.source_type==='expert_user_reviews'?'Expert & user reviews':'Official brochure';
+      const kind=source.source_type==='buyer_guide'?'Buyer guide':source.source_type==='expert_user_reviews'?'Expert & user reviews':'Official brochure';
       const locator=source.locator?` · ${source.locator}`:'';
       link.textContent=`${kind} · ${source.filename||'Source'}${locator}`;
       if(source.doc_id){const page=(String(source.locator||'').match(/page\s+(\d+)/i)||[])[1];link.href=`/api/documents/${encodeURIComponent(source.doc_id)}/file${page?`#page=${page}`:''}`;}
@@ -336,11 +275,9 @@ $('#chat-form').addEventListener('submit', async e=>{
   const chatId = state.currentChatId;
   const activeChat = state.chats.find(chat => chat.id === chatId);
   const history = (activeChat?.messages || []).slice(-8).map(item => ({role:item.role,content:item.text}));
-  const predefinedQuestionId = state.predefinedQuestion?.text === message ? state.predefinedQuestion.id : '';
-  state.predefinedQuestion = null;
   recordMessage('user',message,[],chatId); field.value=''; const send=$('.send-button');send.disabled=true;
   const pending=document.createElement('article');pending.className='message assistant-message';const avatar=document.createElement('div');avatar.className='avatar gemini-avatar';avatar.innerHTML='<svg viewBox="0 0 48 48" aria-label="Gemini"><defs><linearGradient id="gemini-loading-gradient" x1="5" y1="40" x2="42" y2="7" gradientUnits="userSpaceOnUse"><stop stop-color="#4285F4"/><stop offset=".48" stop-color="#9B72CB"/><stop offset="1" stop-color="#D96570"/></linearGradient></defs><path fill="url(#gemini-loading-gradient)" d="M24 3C27.2 14.4 33.6 20.8 45 24C33.6 27.2 27.2 33.6 24 45C20.8 33.6 14.4 27.2 3 24C14.4 20.8 20.8 14.4 24 3Z"/></svg>';const b=document.createElement('div');b.className='bubble pending-bubble';b.textContent='Understanding your question and searching the brochures…';pending.append(avatar,b);$('#messages').append(pending);$('#messages').scrollTop=$('#messages').scrollHeight;
-  try {const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,history,document_ids:state.selectedVehicles.flatMap(vehicle=>vehicle.docIds),predefined_question_id:predefinedQuestionId}),signal:AbortSignal.timeout(90000)});const data=await res.json();pending.remove();recordMessage('assistant',data.answer||data.error||FALLBACK,data.sources||[],chatId)}
+  try {const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,history,document_ids:state.selectedVehicles.flatMap(vehicle=>vehicle.docIds)}),signal:AbortSignal.timeout(90000)});const data=await res.json();pending.remove();recordMessage('assistant',data.answer||data.error||FALLBACK,data.sources||[],chatId)}
   catch (error) {pending.remove();recordMessage('assistant',error.name==='TimeoutError'?'This is taking longer than expected. Please try once more; the answer service may be busy.':'I could not reach the answer service. Please check that AutoSaarthi is running and try again.',[],chatId)}
   finally {send.disabled=false;field.focus()}
 });
@@ -352,13 +289,7 @@ $('#question').addEventListener('keydown', event => {
   }
 });
 
-$('#question').addEventListener('input', () => {
-  if (state.predefinedQuestion && state.predefinedQuestion.text !== $('#question').value.trim()) state.predefinedQuestion = null;
-});
-
 $$('.suggestion').forEach(b=>b.addEventListener('click',()=>{$('#question').value=b.dataset.prompt;$('#question').focus()}));
-$('#question-bank-search').addEventListener('input',renderQuestionBank);
-$('#question-bank-category').addEventListener('change',renderQuestionBank);
 $('#library-search').addEventListener('input',e=>renderLibrary(e.target.value));
 $('#kb-search-form').addEventListener('submit',searchKnowledgeBase);
 
@@ -375,5 +306,5 @@ if (dialog) {
   });
 }
 
-initializeChatHistory();refreshOverview();loadQuestionBank();
+initializeChatHistory();refreshOverview();
 

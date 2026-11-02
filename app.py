@@ -22,7 +22,6 @@ from src import rag
 
 ROOT = Path(__file__).resolve().parent
 PORTALS_PATH = ROOT / "Data" / "portals.json"
-QUESTION_BANK_PATH = ROOT / "Data" / "question_bank.json"
 UPLOAD_DIR = Path(os.getenv("UPLOAD_DIR", str(ROOT / "Data" / "uploads")))
 if not UPLOAD_DIR.is_absolute():
     UPLOAD_DIR = ROOT / UPLOAD_DIR
@@ -58,7 +57,7 @@ When passages support the answer, answer directly and use those facts. Do not re
 
 Never merge specifications across model years, variants, or markets. Separate differing years/variants or ask which one is meant. Respect the passage's market; clearly label foreign-market evidence when answering an India-specific question. Label archival evidence when relevant. Do not call a car best/safest without direct comparative evidence.
 
-Answer concisely and only what was asked. For comparisons, use a compact Markdown table with only requested fields and at most one brief takeaway. Do not put citations, filenames, page numbers, edition/market/status labels, or generic disclaimers in the answer; the UI shows sources separately. For immediate brake failure, fire, smoke, or high-voltage warnings, give urgent stop-safe/contact-assistance guidance first. Refuse requests to disable safety systems, tamper with odometers, or bypass emissions controls.
+Answer concisely and only what was asked. For comparisons, use a compact Markdown table with only requested fields and at most one brief takeaway. Do not put citations, filenames, page numbers, edition/market/status labels, source-type labels, or generic disclaimers in the answer; the UI shows available sources separately. Do not describe evidence as a YouTube review or include transcript timestamps unless the user directly asks about the source. For immediate brake failure, fire, smoke, or high-voltage warnings, give urgent stop-safe/contact-assistance guidance first. Refuse requests to disable safety systems, tamper with odometers, or bypass emissions controls.
 """
 
 
@@ -73,14 +72,13 @@ def gemini_client(api_key: str, timeout: float):
     )
 
 
-def make_response_cache_key(question: str, doc_ids: list[str], question_id: str,
+def make_response_cache_key(question: str, doc_ids: list[str],
                             history: list[dict[str, str]], records: list[dict]) -> str:
     corpus = sorted((str(d.get("doc_id", "")), str(d.get("sha256", "")), str(d.get("source_type", ""))) for d in records)
     reference = bool(re.search(r"\b(?:it|its|this|that|these|those|other|another|same|previous|above)\b", question, re.I))
     payload = {
         "question": " ".join(question.casefold().split()),
         "document_ids": sorted(doc_ids),
-        "predefined_question_id": question_id,
         "answer_model": os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite"),
         "history": history[-6:] if reference else [],
         "corpus": corpus,
@@ -94,36 +92,6 @@ def get_portals():
         return json.loads(PORTALS_PATH.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError):
         return []
-
-
-def get_question_bank():
-    try:
-        data = json.loads(QUESTION_BANK_PATH.read_text(encoding="utf-8"))
-        return data if isinstance(data, list) else []
-    except (OSError, json.JSONDecodeError):
-        app.logger.exception("Could not load the predefined question bank")
-        return []
-
-
-def _question_match_text(value: str) -> str:
-    return re.sub(r"[^a-z0-9{}]+", " ", value.casefold()).strip()
-
-
-def find_predefined_question(question: str, question_id: str = "") -> dict | None:
-    """Recognize a question-bank prompt, ignoring punctuation and casing."""
-    normalized = _question_match_text(question)
-    for category in get_question_bank():
-        for item in category.get("questions", []):
-            if question_id and item.get("id") != question_id:
-                continue
-            pieces = re.split(r"(\{car\d?\})", _question_match_text(item.get("prompt", "")))
-            pattern = "^" + "".join(
-                r"[a-z0-9]+(?: [a-z0-9]+)*?" if re.fullmatch(r"\{car\d?\}", piece) else re.escape(piece)
-                for piece in pieces
-            ) + "$"
-            if re.fullmatch(pattern, normalized):
-                return item
-    return None
 
 
 def normalize_question_with_gemini(
@@ -187,14 +155,9 @@ def overview():
     cars = sorted({(d["brand"], d["model"]) for d in docs})
     public_docs = [{k: d.get(k) for k in (
         "doc_id", "filename", "brand", "model", "model_year", "brochure_edition", "market", "variant",
-        "body_type", "fuel_type", "active_in_india", "official_source_url", "chunks", "indexed_at", "file_type"
+            "body_type", "fuel_type", "active_in_india", "official_source_url", "chunks", "indexed_at", "file_type", "source_type"
     )} | {"built_in": rag.is_builtin_document(d)} for d in docs]
     return jsonify({"api_version": APP_VERSION, "documents": public_docs, "car_count": len(cars), "chunk_count": sum(d.get("chunks", 0) for d in docs), "portals": get_portals()})
-
-
-@app.get("/api/question-bank")
-def question_bank():
-    return jsonify(get_question_bank())
 
 
 @app.post("/api/search")
@@ -255,7 +218,6 @@ def chat():
     if not isinstance(selected_doc_ids, list):
         selected_doc_ids = []
     selected_doc_ids = [str(value) for value in selected_doc_ids[:30] if value]
-    requested_question_id = str(payload.get("predefined_question_id", "")).strip()
     raw_history = payload.get("history", [])
     history = []
     if isinstance(raw_history, list):
@@ -283,12 +245,10 @@ def chat():
         for d in selected_records if d.get("model")
     })
     locally_cleaned_question = rag.correct_question_spelling(question)
-    predefined_question = find_predefined_question(question, requested_question_id)
-    is_predefined_question = predefined_question is not None
     if URGENT_HAZARD.search(question) or URGENT_HAZARD.search(locally_cleaned_question):
         return jsonify({"answer": URGENT_HAZARD_RESPONSE, "sources": []})
     reference_words = re.search(r"\b(?:it|its|this|that|these|those|other|another|same|previous|above)\b", question, re.I)
-    response_cache_key = make_response_cache_key(question, selected_doc_ids, requested_question_id, history, all_records)
+    response_cache_key = make_response_cache_key(question, selected_doc_ids, history, all_records)
     with RESPONSE_CACHE_LOCK:
         cached_response = RESPONSE_CACHE.get(response_cache_key)
         if cached_response is not None:
@@ -336,7 +296,7 @@ def chat():
         explicit_scope_matches
         or (clean_question and bool(selected_cars) and not unresolved_brand_mention and not capitalized_unknown)
     )
-    if is_predefined_question or can_skip_interpretation:
+    if can_skip_interpretation:
         normalized_question = locally_cleaned_question
         if not explicitly_named_vehicles and selected_cars and not reference_words:
             normalized_question = f"{normalized_question.rstrip(' ?.!')} for {', '.join(selected_cars)}?"
@@ -350,7 +310,7 @@ def chat():
             return jsonify({"error": "Gemini could not understand the question right now. Please try again."}), 502
     if URGENT_HAZARD.search(normalized_question):
         return jsonify({"answer": URGENT_HAZARD_RESPONSE, "sources": []})
-    if selected_doc_ids and not is_predefined_question:
+    if selected_doc_ids:
         asks_selection = (
             bool(re.search(r"\b(what|which|name|tell me)\b", normalized_question, re.I))
             and bool(re.search(r"\b(cars?|vehicles?|models?|brochures?)\b", normalized_question, re.I))
@@ -363,11 +323,9 @@ def chat():
                 answer = "You’re comparing " + ", ".join(selected_cars[:-1]) + f" and {selected_cars[-1]}."
             return jsonify({"answer": answer, "sources": []})
     try:
-        search_doc_ids = None if is_predefined_question else (selected_doc_ids or None)
         docs, sources = rag.retrieve(
             normalized_question,
-            document_ids=search_doc_ids,
-            built_in_only=is_predefined_question,
+            document_ids=selected_doc_ids or None,
         )
     except Exception as exc:
         app.logger.exception("Retrieval failed")
