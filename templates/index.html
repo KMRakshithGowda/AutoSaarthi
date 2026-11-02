@@ -40,13 +40,11 @@
           </div>
 
           <aside class="tool-rail reference-panel">
-            <div class="rail-heading"><p class="eyebrow">YOUR REFERENCE LIBRARY</p><div class="reference-title"><h2>Vehicle coverage</h2><span class="count-pill" id="car-count">0 cars</span></div><p>Click a car name to attach its brochure. Select two or more to compare.</p></div>
+            <div class="rail-heading"><p class="eyebrow">YOUR REFERENCE LIBRARY</p><div class="reference-title"><h2>Vehicle coverage</h2><span class="count-pill" id="car-count">0 cars</span></div><p>Click a car to attach its sources, then ask about it or name another car to compare.</p></div>
             <label class="searchbox"><span>⌕</span><input id="library-search" type="search" placeholder="Find a brand or model"></label>
             <div id="mini-library" class="mini-library"><div class="empty-state compact">Loading brochures…</div></div>
             <div class="rail-evidence"><span class="rail-orbit">✳</span><div><small>ANSWER MODE</small><strong>Source first</strong><p>Answers search the supplied vehicle documents.</p></div></div>
             {% if uploads_enabled %}<button class="button button-primary full rail-upload" id="open-upload" type="button">＋ Add a vehicle brochure</button>{% else %}<p class="upload-cloud-note">Cloud preview uses the preloaded source index. Live uploads are turned off.</p>{% endif %}
-            <button class="rail-link" type="button" data-tab-link="knowledge">Browse all documents <span>↗</span></button>
-            <button class="rail-link" type="button" data-tab-link="portals">Open official brand portals <span>↗</span></button>
           </aside>
         </div>
       </section>

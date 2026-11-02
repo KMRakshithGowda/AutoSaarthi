@@ -322,10 +322,40 @@ def chat():
             else:
                 answer = "You’re comparing " + ", ".join(selected_cars[:-1]) + f" and {selected_cars[-1]}."
             return jsonify({"answer": answer, "sources": []})
+    retrieval_question = normalized_question
+    retrieval_doc_ids = list(selected_doc_ids)
+    compare_intent = bool(re.search(r"\b(compare|comparison|versus|vs\.?|difference between|better)\b", normalized_question, re.I))
+    if compare_intent:
+        mentioned_entities = rag._resolve_entities(retrieval_question, all_records) or []
+        references_attached_car = bool(re.search(
+            r"\b(?:attached|selected|chosen|this|that|it|the other car|the other one)\b",
+            f"{question} {normalized_question}", re.I,
+        ))
+        # An attached car is an implicit comparison participant. Resolve it by
+        # name before retrieval so the retriever can balance evidence per car.
+        use_attached_scope = bool(selected_cars) and (
+            references_attached_car or len(mentioned_entities) < 2
+        )
+        if use_attached_scope:
+            retrieval_question += " Attached selected vehicle(s): " + ", ".join(selected_cars)
+        comparison_entities = rag._resolve_entities(retrieval_question, all_records) or []
+        if not use_attached_scope and len(comparison_entities) >= 2:
+            # If both comparison cars are named directly, search those cars
+            # instead of accidentally constraining the query to the sidebar.
+            retrieval_doc_ids = []
+        scoped_ids = set(retrieval_doc_ids)
+        for entity in comparison_entities:
+            for record in all_records:
+                if (record.get("brand", "").casefold() == entity["brand"].casefold()
+                    and record.get("model", "").casefold() == entity["model"].casefold()
+                    and (not entity.get("year") or record.get("model_year") == entity["year"])):
+                    scoped_ids.add(record["doc_id"])
+        if scoped_ids:
+            retrieval_doc_ids = sorted(scoped_ids)
     try:
         docs, sources = rag.retrieve(
-            normalized_question,
-            document_ids=selected_doc_ids or None,
+            retrieval_question,
+            document_ids=retrieval_doc_ids or None,
         )
     except Exception as exc:
         app.logger.exception("Retrieval failed")
