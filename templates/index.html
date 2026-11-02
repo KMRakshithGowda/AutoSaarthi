@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#07111a">
+  <meta name="theme-color" content="#100e0b">
   <title>AutoSaarthi India — Vehicle Guide</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=render-free-index-passages-20261029">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=autosaarthi-review-dataset-20261102">
 </head>
 <body>
   <div class="app-shell">
@@ -84,7 +84,7 @@
 
   {% if uploads_enabled %}<dialog id="upload-dialog" class="upload-dialog"><form id="upload-form" enctype="multipart/form-data"><div class="dialog-head"><div><p class="eyebrow">ATTACH A SOURCE</p><h2>Add a brochure to chat</h2></div><button class="icon-button" type="button" id="close-upload" aria-label="Close">×</button></div><p class="dialog-copy">Choose an official PDF or DOCX. AutoSaarthi reads it, then attaches it to this chat so you can ask questions. Scanned PDFs can be processed with local OCR when available.</p><label class="file-drop" for="brochure-file"><span class="upload-icon">↑</span><strong id="file-label">Choose a PDF or DOCX</strong><small>Up to 150 MB locally · no details to fill in</small><input id="brochure-file" name="file" type="file" accept=".pdf,.docx,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required></label><div class="upload-status" id="upload-status" role="status"></div><div class="dialog-actions"><button class="button button-quiet" type="button" id="cancel-upload">Cancel</button><button class="button button-primary" type="submit">Add to chat</button></div></form></dialog>{% endif %}
 
-  <script src="{{ url_for('static', filename='app.js') }}?v=render-free-index-passages-20261029"></script>
+  <script src="{{ url_for('static', filename='app.js') }}?v=autosaarthi-review-dataset-20261102"></script>
 </body>
 </html>
 

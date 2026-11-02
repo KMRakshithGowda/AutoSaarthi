@@ -1,4 +1,4 @@
-"""Batch-index the user's manually supplied brochures listed in Data/catalog.csv."""
+"""Batch-index active brochures and review transcripts listed in Data/catalog.csv."""
 import csv
 import os
 from pathlib import Path
@@ -6,7 +6,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
 
-from src.rag import DATA_DIR, ingest_file
+from src.rag import DATA_DIR, ingest_file, project_scope
 
 CATALOG = DATA_DIR / "catalog.csv"
 SOURCE_DIR = Path(os.getenv("SOURCE_DIR", str(DATA_DIR / "sources")))
@@ -25,10 +25,18 @@ def main():
             raise SystemExit("catalog.csv needs columns: " + ", ".join(sorted(REQUIRED)))
         rows = list(reader)
 
+    active_keys = {
+        (" ".join(str(item.get("brand", "")).casefold().split()), " ".join(str(item.get("model", "")).casefold().split()))
+        for item in project_scope().get("active_vehicles", [])
+    }
+
     indexed = skipped = 0
     for row_no, row in enumerate(rows, 2):
-        filename = (row.get("brochure_filename") or "").strip()
+        filename = (row.get("source_filename") or row.get("brochure_filename") or "").strip()
         if not filename:
+            continue
+        key = (" ".join((row.get("brand") or "").casefold().split()), " ".join((row.get("model") or "").casefold().split()))
+        if key not in active_keys:
             continue
         source = (SOURCE_DIR / filename).resolve()
         if SOURCE_DIR.resolve() not in source.parents:
@@ -39,7 +47,8 @@ def main():
             print(f"Row {row_no}: missing file {filename}")
             skipped += 1
             continue
-        details = {k: (row.get(k) or "").strip() for k in ("brand", "model", "model_year", "brochure_edition", "market", "variant", "body_type", "fuel_type")}
+        details = {k: (row.get(k) or "").strip() for k in ("brand", "model", "model_year", "brochure_edition", "market", "variant", "body_type", "fuel_type", "source_type")}
+        details["source_type"] = details["source_type"] or ("youtube_transcript" if source.suffix.lower() in {".txt", ".md"} else "official_brochure" if source.suffix.lower() == ".pdf" else "document")
         if not all(details[k] for k in ("brand", "model", "model_year")):
             print(f"Row {row_no}: missing brand, model, or model_year")
             skipped += 1

@@ -1,93 +1,162 @@
-brand,model,model_year,brochure_edition,market,variant,body_type,fuel_type,active_in_india,brochure_filename,official_source_url
-Hyundai,Bayon,Not stated,"Launch, 2026",Not stated,,,,unknown,Hyundai/bayon.pdf,
-Hyundai,Verna,Not stated,Mar 2026,Not stated,,,,unknown,Hyundai/verna.pdf,
-Hyundai,i20 N Line,Not stated,Sep 2025,Not stated,,,,unknown,Hyundai/i20-n-line.pdf,
-Hyundai,Venue,Not stated,Apr 2026,Not stated,,,,unknown,Hyundai/venue.pdf,
-Hyundai,Aura,Not stated,Jun 2025,Not stated,,,,unknown,Hyundai/aura.pdf,
-Hyundai,Creta,Not stated,Aug 2026,Not stated,,,,unknown,Hyundai/creta.pdf,
-Hyundai,Venue N Line,Not stated,Mar 2026,Not stated,,,,unknown,Hyundai/venue-n-line.pdf,
-Hyundai,Creta N Line,Not stated,Sep 2026,Not stated,,,,unknown,Hyundai/creta-n-line.pdf,
-Hyundai,i20,Not stated,Sep 2026,Not stated,,,,unknown,Hyundai/i20.pdf,
-Hyundai,Alcazar,Not stated,Sep-Oct 2026,Not stated,,,,unknown,Hyundai/alcazar.pdf,
-Hyundai,Creta Electric,Not stated,Sep 2026,Not stated,,,,unknown,Hyundai/creta-ev.pdf,
-Hyundai,Exter,Not stated,Aug 2026,Not stated,,,,unknown,Hyundai/exter.pdf,
-Tata,Xpres-T,Not stated,Not stated,Not stated,,,,unknown,Tata/xpres-brochure.pdf,
-Tata,Punch,Not stated,Not stated,Not stated,,,,unknown,Tata/new-tata-punch-brochure.pdf,
-Tata,Harrier,Not stated,Not stated,Not stated,Master brochure,,,unknown,Tata/harrier-master-brochure.pdf,
-Tata,Nexon,Not stated,Not stated,Not stated,Camo brochure,,,unknown,Tata/nexon-camo-brochure-sept.pdf,
-Tata,Sierra,Not stated,Not stated,Not stated,Dark brochure,,,unknown,Tata/sierra-dark-brochure.pdf,
-Tata,Harrier,Not stated,Not stated,Not stated,Red Dark brochure,,,unknown,Tata/harrier-red-dark-brochure.pdf,
-Tata,Sierra,Not stated,Not stated,Not stated,TMGA brochure,,,unknown,Tata/TATA_SIERRA-TMGA-NOV_25.pdf,
-Tata,Safari,Not stated,Not stated,Not stated,Red Dark brochure,,,unknown,Tata/safari-red-dark-brochure.pdf,
-Tata,Sierra,Not stated,Not stated,Not stated,,,,unknown,Tata/sierra-brochure.pdf,
-Tata,Punch EV,Not stated,Not stated,Not stated,,,,unknown,Tata/Punch.ev-Brochure.pdf,
-Tata,Curvv EV,Not stated,Not stated,Not stated,,,,unknown,Tata/curvv-ev-brochure-(1).pdf,
-Tata,Tiago,Not stated,Not stated,Not stated,Next Gen brochure,,,unknown,Tata/next-gen-tiago-brochure-may.pdf,
-Tata,Aeris,Not stated,Not stated,Not stated,iCNG-labeled file; byte-identical duplicate of aeris-brochure.pdf,,,unknown,Tata/aeris-icng-brochure.pdf,
-Tata,Aeris,Not stated,Not stated,Not stated,,,,unknown,Tata/aeris-brochure.pdf,
-Tata,Curvv,Not stated,Not stated,Not stated,Series X,,,unknown,Tata/CURVV_Series-X_Brochure.pdf,
-Tata,Nexon,Not stated,Not stated,Not stated,iCNG,,,unknown,Tata/nexon-i-cng-brochure.pdf,
-Tata,Nexon,Not stated,Not stated,Not stated,,,,unknown,Tata/nexon-brochure-may.pdf,
-Tata,Safari,Not stated,Not stated,Not stated,Master brochure,,,unknown,Tata/safari-master-brochure.pdf,
-Tata,Altroz,Not stated,Not stated,Not stated,,,,unknown,Tata/altroz-brochure-may-2026-new.pdf,
-Jeep,Compass,Not stated,Not stated,Not stated,,,,unknown,Jeep/Jeep-Compass-2025-IN.pdf,
-Jeep,Wrangler,2024,Not stated,Not stated,,,,unknown,Jeep/Jeep-Wrangler-2025-IN.pdf,
-Toyota,Legender,Not stated,Not stated,Not stated,,,,unknown,Toyota/Legender.pdf,
-Toyota,Taisor,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-uc-taisor.pdf,
-Toyota,Glanza,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-glanza.pdf,
-Toyota,Rumion,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-rumion.pdf,
-Toyota,Urban Cruiser Hyryder,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-urbancruiser-hyryder.pdf,
-Toyota,Innova Crysta,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-innova-crysta.pdf,
-Toyota,Land Cruiser 300,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-lc-300.pdf,
-Toyota,Vellfire,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-vellfire.pdf,
-Toyota,Innova Hycross,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-hycross.pdf,
-Toyota,Hilux,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-hilux.pdf,
-Mahindra,Scorpio Pik-Up,2026,Not stated,Indonesia,,,,unknown,Mahindra/Mahindra-Scorpio-Pik-Up-2026-ID.pdf,
-Mahindra,Bolero Maxx Pik-Up,2026,Not stated,South Africa,,,,unknown,Mahindra/Mahindra-Bolero-Maxx-Pik-Up-2026-ZA.pdf,
-Mahindra,Scorpio-N,2026,Not stated,South Africa,,,,unknown,Mahindra/Mahindra-Scorpio-N-2026-ZA.pdf,
-Mahindra,Thar Roxx,2026,Not stated,India,,,,unknown,Mahindra/Mahindra-Thar-Roxx-2026-IN.pdf,
-Mahindra,Thar,2026,Not stated,India,OG,,,unknown,Mahindra/Mahindra-Thar-OG-2026-IN.pdf,
-Mahindra,XEV 9e,2025,Not stated,India,,,,unknown,Mahindra/Mahindra-XEV-9e-2025-IN.pdf,
-Mahindra,XEV 9S,2026,Not stated,India,,,,unknown,Mahindra/Mahindra-XEV-9S-2026-IN.pdf,
-Mahindra,XUV 3X0,2026,Not stated,South Africa,,,,unknown,Mahindra/Mahindra-XUV-3X0-2026-ZA.pdf,
-Mahindra,XUV 400,2025,Not stated,India,,,,unknown,Mahindra/Mahindra-XUV-400-2025-IN.pdf,
-Mahindra,XUV 700,2026,Not stated,New Zealand,Black Edition,,,unknown,Mahindra/Mahindra-XUV-700-Black-Edition-2026-NZ.pdf,
-Mahindra,Marazzo,2025,Not stated,India,,,,unknown,Mahindra/Mahindra-Marazzo-2025-IN.pdf,
-Mahindra,KUV100 NXT,2022,Not stated,South Africa,NXT,,,unknown,Mahindra/Mahindra-KUV-100-nxt-2022-ZA.pdf,
-Maruti Suzuki,Ertiga,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Arena-Ertiga-Brochurepdf-3.pdf,
-Maruti Suzuki,S-Presso,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/S-presso-Brochurepdf-2.pdf,
-Maruti Suzuki,Swift,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Swift Brochure - Vertical - 5th Octpdf.pdf,
-Maruti Suzuki,WagonR,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/WagonR-Brochurepdfpdf.pdf,
-Maruti Suzuki,Eeco,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/EECO-Passenger-Brochure-Arenapdfpdf.pdf,
-Maruti Suzuki,Alto K10,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Arena-Alto-K10-Brochurepdf.pdf,
-Maruti Suzuki,Dzire,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/DZire-brochure_pdf.pdf,
-Maruti Suzuki,Victoris,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Victoris Brochurepdf.pdf,
-Maruti Suzuki,Celerio,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Arena-Celerio-Brochurepdf-1.pdf,
-Maruti Suzuki,Brezza,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Brezza Brochurepdf.pdf,
-Kia,Carens,Not stated,Not stated,India,,,,unknown,Kia/Kia_Carens_Brochure_Mobile_2026.pdf,
-Kia,Sorento,Not stated,Not stated,India,,,,unknown,Kia/Kia_India_Sorento_Brochure_Mobile.pdf,
-Kia,Syros EV,Not stated,Not stated,India,,,,unknown,Kia/Kia_Syros_EV_Brochure_Mobile2026.pdf,
-Kia,Carens Clavis,Not stated,Not stated,India,,,,unknown,Kia/Kia_Carens_Clavis_2026_Mobile.pdf,
-Kia,Carnival,Not stated,Not stated,India,,,,unknown,Kia/Kia_Carnival_Brochure_Mobile.pdf,
-Kia,Seltos,Not stated,Not stated,India,,,,unknown,Kia/Kia_Seltos_Brochure_2026_Mobile.pdf,
-Honda,City,Not stated,Not stated,Not stated,,,,unknown,Honda/New City.pdf,
-Honda,Elevate,Not stated,Not stated,Not stated,,,,unknown,Honda/New Elevate.pdf,
-Honda,ZR-V,Not stated,Not stated,Not stated,,,,unknown,Honda/All New ZR-V.pdf,
-Honda,Amaze 2nd Gen,Not stated,Not stated,Not stated,,,,unknown,Honda/Amaze - 2nd Gen.pdf,
-Honda,Amaze,Not stated,Not stated,Not stated,,,,unknown,Honda/New Amaze.pdf,
-Renault,Triber,Not stated,Not stated,India,TCe 100PS; CNG kit option,,Petrol; CNG kit option,unknown,Renault/triber.pdf,
-Renault,Duster,Not stated,Not stated,India,E-Tech 160 Strong Hybrid,,Hybrid (HEV),unknown,Renault/duster-hev-product-brochure.pdf,
-Renault,Duster,Not stated,Not stated,India,Petrol brochure,,Petrol,unknown,Renault/renault petrol.pdf,
-Renault,Kwid,Not stated,Not stated,India,,,Petrol; CNG kit option,unknown,Renault/renault kwid.pdf,
-Renault,Kiger,Not stated,Not stated,India,,,Petrol; CNG kit option,unknown,Renault/renault kiger.pdf,
-MG,Astor,Not stated,Not stated,India,,,,unknown,MG/MG Astor - Brochure.pdf,
-MG,Windsor EV,Not stated,Not stated,India,,,,unknown,MG/MG Windsor EV - Brochure.pdf,
-MG,Majestor,Not stated,Not stated,India,,,,unknown,MG/MG Majestor - Brochure.pdf,
-MG,ZS EV,Not stated,Not stated,India,,,,unknown,MG/MG ZSEV - Brochure.pdf,
-MG,Comet EV,Not stated,Not stated,India,,,,unknown,MG/MG Comet EV - Brochure.pdf,
-MG,Hector,Not stated,Not stated,India,,,,unknown,MG/MG Hector - Brochure.pdf,
-Volkswagen,Golf GTI,Not stated,Not stated,Not stated,GTI,,,unknown,Volkswagen/golf-gti-brochure.pdf,
-Volkswagen,Tiguan,Not stated,April 2025,India,R-Line,,,unknown,Volkswagen/tiguan-r-line-brochure.pdf,
-Volkswagen,Virtus,Not stated,July 2023,India,,,,unknown,Volkswagen/Virtus-Brochure.pdf,
-Volkswagen,Tayron,Not stated,Not stated,Not stated,,,,unknown,Volkswagen/tayron-brochure.pdf,
-Volkswagen,Taigun,Not stated,July 2023,India,,,,unknown,Volkswagen/Taigun-Brochure.pdf,
+﻿brand,model,model_year,brochure_edition,market,variant,body_type,fuel_type,active_in_india,brochure_filename,official_source_url,source_type
+Hyundai,Bayon,Not stated,"Launch, 2026",Not stated,,,,unknown,Hyundai/bayon.pdf,,
+Hyundai,Verna,Not stated,Mar 2026,Not stated,,,,unknown,Hyundai/verna.pdf,,
+Hyundai,Venue,Not stated,Apr 2026,Not stated,,,,unknown,Hyundai/venue.pdf,,
+Hyundai,Creta,Not stated,Aug 2026,Not stated,,,,unknown,Hyundai/creta.pdf,,
+Hyundai,i20,Not stated,Sep 2026,Not stated,,,,unknown,Hyundai/i20.pdf,,
+Hyundai,Alcazar,Not stated,Sep-Oct 2026,Not stated,,,,unknown,Hyundai/alcazar.pdf,,
+Tata,Punch,Not stated,Not stated,Not stated,,,,unknown,Tata/new-tata-punch-brochure.pdf,,
+Tata,Harrier,Not stated,Not stated,Not stated,Master brochure,,,unknown,Tata/harrier-master-brochure.pdf,,
+Tata,Nexon,Not stated,Not stated,Not stated,Camo brochure,,,unknown,Tata/nexon-camo-brochure-sept.pdf,,
+Tata,Sierra,Not stated,Not stated,Not stated,Dark brochure,,,unknown,Tata/sierra-dark-brochure.pdf,,
+Tata,Harrier,Not stated,Not stated,Not stated,Red Dark brochure,,,unknown,Tata/harrier-red-dark-brochure.pdf,,
+Tata,Sierra,Not stated,Not stated,Not stated,TMGA brochure,,,unknown,Tata/TATA_SIERRA-TMGA-NOV_25.pdf,,
+Tata,Safari,Not stated,Not stated,Not stated,Red Dark brochure,,,unknown,Tata/safari-red-dark-brochure.pdf,,
+Tata,Sierra,Not stated,Not stated,Not stated,,,,unknown,Tata/sierra-brochure.pdf,,
+Tata,Punch EV,Not stated,Not stated,Not stated,,,,unknown,Tata/Punch.ev-Brochure.pdf,,
+Tata,Curvv EV,Not stated,Not stated,Not stated,,,,unknown,Tata/curvv-ev-brochure-(1).pdf,,
+Tata,Curvv,Not stated,Not stated,Not stated,Series X,,,unknown,Tata/CURVV_Series-X_Brochure.pdf,,
+Tata,Nexon,Not stated,Not stated,Not stated,iCNG,,,unknown,Tata/nexon-i-cng-brochure.pdf,,
+Tata,Nexon,Not stated,Not stated,Not stated,,,,unknown,Tata/nexon-brochure-may.pdf,,
+Tata,Safari,Not stated,Not stated,Not stated,Master brochure,,,unknown,Tata/safari-master-brochure.pdf,,
+Toyota,Legender,Not stated,Not stated,Not stated,,,,unknown,Toyota/Legender.pdf,,
+Toyota,Glanza,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-glanza.pdf,,
+Toyota,Rumion,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-rumion.pdf,,
+Toyota,Urban Cruiser Hyryder,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-urbancruiser-hyryder.pdf,,
+Toyota,Innova Crysta,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-innova-crysta.pdf,,
+Toyota,Innova Hycross,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-hycross.pdf,,
+Toyota,Hilux,Not stated,Not stated,Not stated,,,,unknown,Toyota/e-brochure-hilux.pdf,,
+Mahindra,Scorpio-N,2026,Not stated,South Africa,,,,unknown,Mahindra/Mahindra-Scorpio-N-2026-ZA.pdf,,
+Mahindra,Thar Roxx,2026,Not stated,India,,,,unknown,Mahindra/Mahindra-Thar-Roxx-2026-IN.pdf,,
+Mahindra,XUV 3X0,2026,Not stated,South Africa,,,,unknown,Mahindra/Mahindra-XUV-3X0-2026-ZA.pdf,,
+Maruti Suzuki,Ertiga,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Arena-Ertiga-Brochurepdf-3.pdf,,
+Maruti Suzuki,Swift,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Swift Brochure - Vertical - 5th Octpdf.pdf,,
+Maruti Suzuki,WagonR,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/WagonR-Brochurepdfpdf.pdf,,
+Maruti Suzuki,Brezza,Not stated,Not stated,India,,,,unknown,Maruti-Suzuki/Brezza Brochurepdf.pdf,,
+Kia,Carens,Not stated,Not stated,India,,,,unknown,Kia/Kia_Carens_Brochure_Mobile_2026.pdf,,
+Kia,Seltos,Not stated,Not stated,India,,,,unknown,Kia/Kia_Seltos_Brochure_2026_Mobile.pdf,,
+Honda,City,Not stated,Not stated,Not stated,,,,unknown,Honda/New City.pdf,,
+Renault,Duster,Not stated,Not stated,India,E-Tech 160 Strong Hybrid,,Hybrid (HEV),unknown,Renault/duster-hev-product-brochure.pdf,,
+Renault,Duster,Not stated,Not stated,India,Petrol brochure,,Petrol,unknown,Renault/renault petrol.pdf,,
+Renault,Kwid,Not stated,Not stated,India,,,Petrol; CNG kit option,unknown,Renault/renault kwid.pdf,,
+MG,Hector,Not stated,Not stated,India,,,,unknown,MG/MG Hector - Brochure.pdf,,
+Volkswagen,Virtus,Not stated,July 2023,India,,,,unknown,Volkswagen/Virtus-Brochure.pdf,,
+Volkswagen,Taigun,Not stated,July 2023,India,,,,unknown,Volkswagen/Taigun-Brochure.pdf,,
+Hyundai,Alcazar,Not stated,,India,,,,unknown,Reviews/alcazar.txt,,youtube_transcript
+Maruti Suzuki,Baleno,Not stated,,India,,,,unknown,Reviews/Baleno vs glanza.txt,,youtube_transcript
+Toyota,Glanza,Not stated,,India,,,,unknown,Reviews/Baleno vs glanza.txt,,youtube_transcript
+Mahindra,Bolero,Not stated,,India,,,,unknown,Reviews/Bolero.txt,,youtube_transcript
+Maruti Suzuki,Brezza,Not stated,,India,,,,unknown,Reviews/Breeza.txt,,youtube_transcript
+Hyundai,Creta,Not stated,,India,,,,unknown,Reviews/Creta.txt,,youtube_transcript
+Tata,Curvv EV,Not stated,,India,,,,unknown,Reviews/Curvv Ev.txt,,youtube_transcript
+Tata,Curvv,Not stated,,India,,,,unknown,Reviews/Curvv.txt,,youtube_transcript
+Renault,Duster,Not stated,,India,,,,unknown,Reviews/duster.txt,,youtube_transcript
+Maruti Suzuki,Ertiga,Not stated,,India,,,,unknown,Reviews/Ertiga.txt,,youtube_transcript
+Honda,Amaze,Not stated,,India,,,,unknown,Reviews/Honda Amaze.txt,,youtube_transcript
+Tata,Harrier,Not stated,,India,,,,unknown,Reviews/Harrier.txt,,youtube_transcript
+Tata,Harrier EV,Not stated,,India,,,,unknown,Reviews/herrier ev.txt,,youtube_transcript
+Toyota,Hilux,Not stated,,India,,,,unknown,Reviews/Hilux.txt,,youtube_transcript
+Honda,City,Not stated,,India,,,,unknown,Reviews/Honda city.txt,,youtube_transcript
+Toyota,Innova Hycross,Not stated,,India,,,,unknown,Reviews/hycross.txt,,youtube_transcript
+Hyundai,Bayon,Not stated,,India,,,,unknown,Reviews/Hyundai bayoun(2).txt,,youtube_transcript
+Hyundai,i20,Not stated,,India,,,,unknown,Reviews/i20.txt,,youtube_transcript
+Toyota,Innova Crysta,Not stated,,India,,,,unknown,Reviews/Innova Crysta.txt,,youtube_transcript
+Maruti Suzuki,WagonR,Not stated,,India,,,,unknown,Reviews/2019_Maruti_Wagon_R_Review_-_Beware_Santro_MotorBeam (1).md,,youtube_transcript
+Kia,Carens,Not stated,,India,,,,unknown,Reviews/Kia Carrens.txt,,youtube_transcript
+Toyota,Legender,Not stated,,India,,,,unknown,Reviews/Legender.txt,,youtube_transcript
+Maruti Suzuki,WagonR,Not stated,,India,,,,unknown,Reviews/Maruthi Wagonr (2).txt,,youtube_transcript
+MG,Hector,Not stated,,India,,,,unknown,Reviews/MG Hector.txt,,youtube_transcript
+Tata,Nexon,Not stated,,India,,,,unknown,Reviews/Nexon (All).txt,,youtube_transcript
+Tata,Punch,Not stated,,India,,,,unknown,Reviews/punch vs punch ev (both).txt,,youtube_transcript
+Tata,Punch EV,Not stated,,India,,,,unknown,Reviews/punch vs punch ev (both).txt,,youtube_transcript
+Renault,Kwid,Not stated,,India,,,,unknown,Reviews/Renault Kwid.txt,,youtube_transcript
+Tata,Safari,Not stated,,India,,,,unknown,Reviews/Safari.txt,,youtube_transcript
+Mahindra,Scorpio-N,Not stated,,India,,,,unknown,Reviews/scorpio.txt,,youtube_transcript
+Kia,Seltos,Not stated,,India,,,,unknown,Reviews/Seltos.txt,,youtube_transcript
+Tata,Sierra,Not stated,,India,,,,unknown,Reviews/Sierra(2).txt,,youtube_transcript
+Tata,Sierra,Not stated,,India,,,,unknown,Reviews/Sierra.txt,,youtube_transcript
+Maruti Suzuki,Swift,Not stated,,India,,,,unknown,Reviews/Swift.txt,,youtube_transcript
+Volkswagen,Taigun,Not stated,,India,,,,unknown,Reviews/Taigun.txt,,youtube_transcript
+Mahindra,Thar Roxx,Not stated,,India,,,,unknown,Reviews/Thar Roxxtxt.txt,,youtube_transcript
+Toyota,Rumion,Not stated,,India,,,,unknown,Reviews/Toyota rumion vs ertiga (comparision).txt,,youtube_transcript
+Maruti Suzuki,Ertiga,Not stated,,India,,,,unknown,Reviews/Toyota rumion vs ertiga (comparision).txt,,youtube_transcript
+Toyota,Urban Cruiser Hyryder,Not stated,,India,,,,unknown,Reviews/Urban Cruiser Hyryder.txt,,youtube_transcript
+Hyundai,Bayon,Not stated,,India,,,,unknown,Reviews/2026_Hyundai_Bayon_Walkaround_Price_Features_Interior_Engine_Variants_Explained_.md,,youtube_transcript
+Hyundai,Venue,Not stated,,India,,,,unknown,Reviews/Venue.txt,,youtube_transcript
+Hyundai,Verna,Not stated,,India,,,,unknown,Reviews/Verna.txt,,youtube_transcript
+Volkswagen,Virtus,Not stated,,India,,,,unknown,Reviews/Virtus.txt,,youtube_transcript
+Mahindra,XUV 3X0,Not stated,,India,,,,unknown,Reviews/xuv 3xo.txt,,youtube_transcript
+Maruti Suzuki,WagonR,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Maruti_Suzuki_WagonR.md,,buyer_guide
+Maruti Suzuki,Baleno,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Maruti_Suzuki_Baleno.md,,buyer_guide
+Honda,Amaze,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Honda_Amaze.md,,buyer_guide
+Honda,City,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Honda_City.md,,buyer_guide
+Hyundai,Verna,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Hyundai_Verna.md,,buyer_guide
+Volkswagen,Virtus,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Volkswagen_Virtus.md,,buyer_guide
+Maruti Suzuki,Brezza,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Maruti_Suzuki_Brezza.md,,buyer_guide
+Tata,Nexon,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Tata_Nexon.md,,buyer_guide
+Hyundai,Venue,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Hyundai_Venue.md,,buyer_guide
+Mahindra,XUV 3X0,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Mahindra_XUV_3X0.md,,buyer_guide
+Renault,Kwid,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Renault_Kwid.md,,buyer_guide
+Hyundai,Bayon,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Hyundai_Bayon.md,,buyer_guide
+Hyundai,Creta,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Hyundai_Creta.md,,buyer_guide
+Kia,Seltos,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Kia_Seltos.md,,buyer_guide
+Toyota,Urban Cruiser Hyryder,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Toyota_Urban_Cruiser_Hyryder.md,,buyer_guide
+Tata,Curvv,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Tata_Curvv.md,,buyer_guide
+Tata,Curvv EV,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Tata_Curvv_EV.md,,buyer_guide
+Volkswagen,Taigun,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Volkswagen_Taigun.md,,buyer_guide
+Renault,Duster,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Renault_Duster.md,,buyer_guide
+MG,Hector,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/MG_Hector.md,,buyer_guide
+Mahindra,Thar Roxx,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Mahindra_Thar_Roxx.md,,buyer_guide
+Maruti Suzuki,Ertiga,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Maruti_Suzuki_Ertiga.md,,buyer_guide
+Toyota,Rumion,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Toyota_Rumion.md,,buyer_guide
+Toyota,Innova Crysta,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Toyota_Innova_Crysta.md,,buyer_guide
+Toyota,Innova Hycross,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Toyota_Innova_Hycross.md,,buyer_guide
+Kia,Carens,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Kia_Carens.md,,buyer_guide
+Mahindra,Scorpio-N,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Mahindra_Scorpio_N.md,,buyer_guide
+Tata,Safari,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Tata_Safari.md,,buyer_guide
+Hyundai,Alcazar,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Hyundai_Alcazar.md,,buyer_guide
+Toyota,Legender,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Toyota_Legender.md,,buyer_guide
+Tata,Punch,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Tata_Punch.md,,buyer_guide
+Tata,Harrier,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Tata_Harrier.md,,buyer_guide
+Toyota,Hilux,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Toyota_Hilux.md,,buyer_guide
+Maruti Suzuki,Swift,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Maruti_Suzuki_Swift.md,,buyer_guide
+Tata,Sierra,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Tata_Sierra.md,,buyer_guide
+Mahindra,Bolero,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Mahindra_Bolero.md,,buyer_guide
+Hyundai,i20,Not stated,,India,,,,unknown,BuyerGuide/vehicle_sections/Hyundai_i20.md,,buyer_guide
+Maruti Suzuki,WagonR,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Maruti_Suzuki_WagonR.md,,expert_user_reviews
+Maruti Suzuki,Baleno,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Maruti_Suzuki_Baleno.md,,expert_user_reviews
+Honda,Amaze,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Honda_Amaze.md,,expert_user_reviews
+Honda,City,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Honda_City.md,,expert_user_reviews
+Hyundai,Verna,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Hyundai_Verna.md,,expert_user_reviews
+Volkswagen,Virtus,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Volkswagen_Virtus.md,,expert_user_reviews
+Maruti Suzuki,Brezza,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Maruti_Suzuki_Brezza.md,,expert_user_reviews
+Tata,Nexon,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Tata_Nexon.md,,expert_user_reviews
+Hyundai,Venue,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Hyundai_Venue.md,,expert_user_reviews
+Mahindra,XUV 3X0,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Mahindra_XUV_3X0.md,,expert_user_reviews
+Renault,Kwid,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Renault_Kwid.md,,expert_user_reviews
+Hyundai,Bayon,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Hyundai_Bayon.md,,expert_user_reviews
+Hyundai,Creta,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Hyundai_Creta.md,,expert_user_reviews
+Kia,Seltos,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Kia_Seltos.md,,expert_user_reviews
+Toyota,Urban Cruiser Hyryder,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Toyota_Urban_Cruiser_Hyryder.md,,expert_user_reviews
+Tata,Curvv,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Tata_Curvv.md,,expert_user_reviews
+Tata,Curvv EV,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Tata_Curvv_EV.md,,expert_user_reviews
+Volkswagen,Taigun,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Volkswagen_Taigun.md,,expert_user_reviews
+Renault,Duster,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Renault_Duster.md,,expert_user_reviews
+MG,Hector,Not stated,,India,,,,unknown,BuyerGuide/review_sections/MG_Hector.md,,expert_user_reviews
+Mahindra,Thar Roxx,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Mahindra_Thar_Roxx.md,,expert_user_reviews
+Maruti Suzuki,Ertiga,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Maruti_Suzuki_Ertiga.md,,expert_user_reviews
+Toyota,Rumion,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Toyota_Rumion.md,,expert_user_reviews
+Toyota,Innova Crysta,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Toyota_Innova_Crysta.md,,expert_user_reviews
+Toyota,Innova Hycross,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Toyota_Innova_Hycross.md,,expert_user_reviews
+Kia,Carens,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Kia_Carens.md,,expert_user_reviews
+Mahindra,Scorpio-N,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Mahindra_Scorpio_N.md,,expert_user_reviews
+Tata,Safari,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Tata_Safari.md,,expert_user_reviews
+Hyundai,Alcazar,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Hyundai_Alcazar.md,,expert_user_reviews
+Toyota,Legender,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Toyota_Legender.md,,expert_user_reviews
+Tata,Punch,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Tata_Punch.md,,expert_user_reviews
+Tata,Harrier,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Tata_Harrier.md,,expert_user_reviews
+Toyota,Hilux,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Toyota_Hilux.md,,expert_user_reviews
+Maruti Suzuki,Swift,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Maruti_Suzuki_Swift.md,,expert_user_reviews
+Tata,Sierra,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Tata_Sierra.md,,expert_user_reviews
+Mahindra,Bolero,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Mahindra_Bolero.md,,expert_user_reviews
+Hyundai,i20,Not stated,,India,,,,unknown,BuyerGuide/review_sections/Hyundai_i20.md,,expert_user_reviews

@@ -9,6 +9,12 @@ Data/sources/*.pdf
 Data/sources/*.docx
 Data/sources/**/*.pdf
 Data/sources/**/*.docx
+!Data/sources/BuyerGuide/
+Data/sources/BuyerGuide/*.docx
+!Data/sources/BuyerGuide/AutoSaarthi_40_Cars_Indian_Buyer_Guide.docx
+!Data/sources/BuyerGuide/AutoSaarthi_40_Cars_Comprehensive_Reviews_Dataset.docx
+!Data/sources/BuyerGuide/vehicle_sections/
+!Data/sources/BuyerGuide/review_sections/
 Data/manifest.tmp
 instance/
 .pytest_cache/

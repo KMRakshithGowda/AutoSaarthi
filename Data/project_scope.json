@@ -1,0 +1,1288 @@
+{
+  "schema_version": 1,
+  "description": "Authoritative active vehicle and source scope for AutoSaarthi. Built-in documents outside this scope are hidden from chat and knowledge-base search; source files are retained for reversibility.",
+  "active_vehicles": [
+    {
+      "brand": "Hyundai",
+      "model": "Alcazar",
+      "source_files": [
+        {
+          "filename": "Hyundai/alcazar.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/alcazar.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Hyundai_Alcazar.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Hyundai_Alcazar.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Bayon",
+      "source_files": [
+        {
+          "filename": "Hyundai/bayon.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Hyundai bayoun(2).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/2026_Hyundai_Bayon_Walkaround_Price_Features_Interior_Engine_Variants_Explained_.md",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Hyundai_Bayon.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Hyundai_Bayon.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Creta",
+      "source_files": [
+        {
+          "filename": "Hyundai/creta.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Creta.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Hyundai_Creta.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Hyundai_Creta.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "i20",
+      "source_files": [
+        {
+          "filename": "Hyundai/i20.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/i20.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Hyundai_i20.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Hyundai_i20.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Venue",
+      "source_files": [
+        {
+          "filename": "Hyundai/venue.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Venue.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Hyundai_Venue.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Hyundai_Venue.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Verna",
+      "source_files": [
+        {
+          "filename": "Hyundai/verna.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Verna.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Hyundai_Verna.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Hyundai_Verna.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Baleno",
+      "source_files": [
+        {
+          "filename": "Reviews/Baleno vs glanza.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Maruti_Suzuki_Baleno.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Maruti_Suzuki_Baleno.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Brezza",
+      "aliases": [
+        "Breeza"
+      ],
+      "source_files": [
+        {
+          "filename": "Maruti-Suzuki/Brezza Brochurepdf.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Breeza.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Maruti_Suzuki_Brezza.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Maruti_Suzuki_Brezza.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Ertiga",
+      "source_files": [
+        {
+          "filename": "Maruti-Suzuki/Arena-Ertiga-Brochurepdf-3.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Ertiga.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Toyota rumion vs ertiga (comparision).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Maruti_Suzuki_Ertiga.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Maruti_Suzuki_Ertiga.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "WagonR",
+      "aliases": [
+        "Wagon R",
+        "Wagnor",
+        "Wagoner"
+      ],
+      "source_files": [
+        {
+          "filename": "Maruti-Suzuki/WagonR-Brochurepdfpdf.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/2019_Maruti_Wagon_R_Review_-_Beware_Santro_MotorBeam (1).md",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Maruthi Wagonr (2).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Maruti_Suzuki_WagonR.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Maruti_Suzuki_WagonR.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Swift",
+      "source_files": [
+        {
+          "filename": "Maruti-Suzuki/Swift Brochure - Vertical - 5th Octpdf.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Swift.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Maruti_Suzuki_Swift.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Maruti_Suzuki_Swift.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "Bolero",
+      "source_files": [
+        {
+          "filename": "Reviews/Bolero.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Mahindra_Bolero.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Mahindra_Bolero.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "Scorpio-N",
+      "source_files": [
+        {
+          "filename": "Mahindra/Mahindra-Scorpio-N-2026-ZA.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/scorpio.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Mahindra_Scorpio_N.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Mahindra_Scorpio_N.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "Thar Roxx",
+      "source_files": [
+        {
+          "filename": "Mahindra/Mahindra-Thar-Roxx-2026-IN.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Thar Roxxtxt.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Mahindra_Thar_Roxx.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Mahindra_Thar_Roxx.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "XUV 3X0",
+      "aliases": [
+        "XUV 3XO",
+        "XUV300"
+      ],
+      "source_files": [
+        {
+          "filename": "Mahindra/Mahindra-XUV-3X0-2026-ZA.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/xuv 3xo.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Mahindra_XUV_3X0.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Mahindra_XUV_3X0.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Curvv",
+      "source_files": [
+        {
+          "filename": "Tata/CURVV_Series-X_Brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Curvv.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Tata_Curvv.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Tata_Curvv.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Curvv EV",
+      "source_files": [
+        {
+          "filename": "Tata/curvv-ev-brochure-(1).pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Curvv Ev.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Tata_Curvv_EV.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Tata_Curvv_EV.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Harrier",
+      "source_files": [
+        {
+          "filename": "Tata/harrier-master-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Tata/harrier-red-dark-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Harrier.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Tata_Harrier.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Tata_Harrier.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Harrier EV",
+      "source_files": [
+        {
+          "filename": "Reviews/herrier ev.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Nexon",
+      "source_files": [
+        {
+          "filename": "Tata/nexon-camo-brochure-sept.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Tata/nexon-i-cng-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Tata/nexon-brochure-may.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Nexon (All).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Tata_Nexon.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Tata_Nexon.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Punch",
+      "source_files": [
+        {
+          "filename": "Tata/new-tata-punch-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/punch vs punch ev (both).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Tata_Punch.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Tata_Punch.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Punch EV",
+      "source_files": [
+        {
+          "filename": "Tata/Punch.ev-Brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/punch vs punch ev (both).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Safari",
+      "source_files": [
+        {
+          "filename": "Tata/safari-red-dark-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Tata/safari-master-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Safari.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Tata_Safari.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Tata_Safari.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Tata",
+      "model": "Sierra",
+      "source_files": [
+        {
+          "filename": "Tata/sierra-dark-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Tata/TATA_SIERRA-TMGA-NOV_25.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Tata/sierra-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Sierra(2).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Sierra.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Tata_Sierra.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Tata_Sierra.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Renault",
+      "model": "Duster",
+      "source_files": [
+        {
+          "filename": "Renault/duster-hev-product-brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Renault/renault petrol.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/duster.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Renault_Duster.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Renault_Duster.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Renault",
+      "model": "Kwid",
+      "source_files": [
+        {
+          "filename": "Renault/renault kwid.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Renault Kwid.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Renault_Kwid.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Renault_Kwid.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Honda",
+      "model": "Amaze",
+      "source_files": [
+        {
+          "filename": "Reviews/Honda Amaze.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Honda_Amaze.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Honda_Amaze.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "excluded_files": [
+        "New Amaze.pdf",
+        "Amaze - 2nd Gen.pdf"
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Honda",
+      "model": "City",
+      "source_files": [
+        {
+          "filename": "Honda/New City.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Honda city.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Honda_City.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Honda_City.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Hilux",
+      "source_files": [
+        {
+          "filename": "Toyota/e-brochure-hilux.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Hilux.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Toyota_Hilux.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Toyota_Hilux.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Innova Hycross",
+      "source_files": [
+        {
+          "filename": "Toyota/e-brochure-hycross.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/hycross.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Toyota_Innova_Hycross.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Toyota_Innova_Hycross.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Innova Crysta",
+      "source_files": [
+        {
+          "filename": "Toyota/e-brochure-innova-crysta.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Innova Crysta.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Toyota_Innova_Crysta.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Toyota_Innova_Crysta.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Rumion",
+      "aliases": [
+        "Toyota Rumion / Ertiga comparison"
+      ],
+      "source_files": [
+        {
+          "filename": "Toyota/e-brochure-rumion.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Toyota rumion vs ertiga (comparision).txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Toyota_Rumion.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Toyota_Rumion.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Glanza",
+      "source_files": [
+        {
+          "filename": "Toyota/e-brochure-glanza.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Baleno vs glanza.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Urban Cruiser Hyryder",
+      "aliases": [
+        "Hyryder"
+      ],
+      "source_files": [
+        {
+          "filename": "Toyota/e-brochure-urbancruiser-hyryder.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Urban Cruiser Hyryder.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Toyota_Urban_Cruiser_Hyryder.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Toyota_Urban_Cruiser_Hyryder.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Legender",
+      "source_files": [
+        {
+          "filename": "Toyota/Legender.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Legender.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Toyota_Legender.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Toyota_Legender.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Kia",
+      "model": "Carens",
+      "source_files": [
+        {
+          "filename": "Kia/Kia_Carens_Brochure_Mobile_2026.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Kia Carrens.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Kia_Carens.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Kia_Carens.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Kia",
+      "model": "Seltos",
+      "source_files": [
+        {
+          "filename": "Kia/Kia_Seltos_Brochure_2026_Mobile.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Seltos.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Kia_Seltos.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Kia_Seltos.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "MG",
+      "model": "Hector",
+      "source_files": [
+        {
+          "filename": "MG/MG Hector - Brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/MG Hector.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/MG_Hector.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/MG_Hector.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Volkswagen",
+      "model": "Taigun",
+      "source_files": [
+        {
+          "filename": "Volkswagen/Taigun-Brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Taigun.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Volkswagen_Taigun.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Volkswagen_Taigun.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    },
+    {
+      "brand": "Volkswagen",
+      "model": "Virtus",
+      "source_files": [
+        {
+          "filename": "Volkswagen/Virtus-Brochure.pdf",
+          "source_type": "",
+          "status": "indexed"
+        },
+        {
+          "filename": "Reviews/Virtus.txt",
+          "source_type": "youtube_transcript",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/vehicle_sections/Volkswagen_Virtus.md",
+          "source_type": "buyer_guide",
+          "status": "indexed"
+        },
+        {
+          "filename": "BuyerGuide/review_sections/Volkswagen_Virtus.md",
+          "source_type": "expert_user_reviews",
+          "status": "indexed"
+        }
+      ],
+      "source_status": "indexed"
+    }
+  ],
+  "excluded_vehicles": [
+    {
+      "brand": "Jeep",
+      "model": "*"
+    },
+    {
+      "brand": "MG",
+      "model": "Astor"
+    },
+    {
+      "brand": "MG",
+      "model": "Windsor EV"
+    },
+    {
+      "brand": "MG",
+      "model": "Comet EV"
+    },
+    {
+      "brand": "MG",
+      "model": "Majestor"
+    },
+    {
+      "brand": "MG",
+      "model": "ZS EV"
+    },
+    {
+      "brand": "Volkswagen",
+      "model": "Tayron"
+    },
+    {
+      "brand": "Renault",
+      "model": "Kiger"
+    },
+    {
+      "brand": "Renault",
+      "model": "Triber"
+    },
+    {
+      "brand": "Kia",
+      "model": "Sorento"
+    },
+    {
+      "brand": "Kia",
+      "model": "Syros EV"
+    },
+    {
+      "brand": "Kia",
+      "model": "Carnival"
+    },
+    {
+      "brand": "Kia",
+      "model": "Carens Clavis"
+    },
+    {
+      "brand": "Honda",
+      "model": "Elevate"
+    },
+    {
+      "brand": "Honda",
+      "model": "ZR-V"
+    },
+    {
+      "brand": "Honda",
+      "model": "Amaze (new generation brochure)"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "XEV 9e"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "XEV 9S"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "XUV 400"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "Marazzo"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "KUV100 NXT"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "Scorpio Pik-Up"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "Thar (standard)"
+    },
+    {
+      "brand": "Mahindra",
+      "model": "Bolero Maxx Pik-Up"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Dzire"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Victoris"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Celerio"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "S-Presso"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Eeco"
+    },
+    {
+      "brand": "Maruti Suzuki",
+      "model": "Alto K10"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "i20 N Line"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Venue N Line"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Creta N Line"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Aura"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Creta Electric"
+    },
+    {
+      "brand": "Hyundai",
+      "model": "Exter"
+    },
+    {
+      "brand": "Tata",
+      "model": "Xpres-T"
+    },
+    {
+      "brand": "Tata",
+      "model": "Tiago"
+    },
+    {
+      "brand": "Tata",
+      "model": "Aeris"
+    },
+    {
+      "brand": "Tata",
+      "model": "Altroz"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Taisor"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Land Cruiser 300"
+    },
+    {
+      "brand": "Toyota",
+      "model": "Vellfire"
+    }
+  ],
+  "general_knowledge_policy": "Retrieved brochure/transcript evidence is primary and is cited. When a requested detail is absent, Gemini may provide clearly labeled general automotive context, but must not invent precise vehicle-, variant-, market-, or model-year-specific figures."
+}

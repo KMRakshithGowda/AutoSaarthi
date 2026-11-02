@@ -1,93 +1,45 @@
 # AutoSaarthi India
 
-**A brochure-grounded RAG assistant for researching cars in India.**
+AutoSaarthi is a Flask-based RAG assistant for Indian vehicle research. It supports an active catalogue of 40 vehicles and has three website tabs: **AI Assistant**, **Knowledge Base**, and **Official Portals**.
 
-AutoSaarthi helps buyers ask questions about vehicles and compare models using information retrieved from indexed car brochures. Answers are grounded in retrieved passages, with brochure and page or section references shown in the app.
+## Sources and answers
 
-## Features
+The assistant retrieves from the active vehicle's indexed sources:
 
-- Ask questions in natural language, including common spelling mistakes and follow-up questions.
-- Compare selected vehicles using evidence retrieved for each model.
-- Browse predefined questions, search indexed brochure passages, and view source locations.
-- Add PDF or DOCX brochures when running locally.
-- Browse official manufacturer and vehicle-safety portal links.
-- Show an immediate safety response for urgent brake, fire, smoke, and high-voltage battery concerns.
+- Official manufacturer brochures (primary source for published specifications).
+- Supplied YouTube review transcripts (reviewer and test-drive observations).
+- Vehicle-specific extracts from the supplied Indian Buyer Guide and Comprehensive Expert & User Reviews Dataset Word documents. These are project-supplied summaries, not independently verified primary sources; their claims are labeled accordingly.
 
-## How it works
+Gemini interprets spelling errors and follow-up references before retrieval, then drafts a concise answer from retrieved passages. The app distinguishes manufacturer specifications from review observations and project guide claims. It does not invent exact variant-specific figures when no source supports them. Unsupported or excluded vehicles use the configured fallback. Source references are shown with the answer.
 
-1. **Index brochures:** PDF/DOCX text is extracted, split into vehicle-tagged chunks, embedded with MiniLM, and stored in ChromaDB.
-2. **Answer questions:** Gemini clarifies spelling and references when needed; AutoSaarthi retrieves passages for the requested vehicle; Gemini drafts an answer from those passages, and the app shows their source locations.
+## Local Windows setup
 
-## Technology
+Requirements: Python 3.11+ and a Gemini API key.
 
-| Area | Technology |
-| --- | --- |
-| Web app | Python, Flask |
-| Vector search | ChromaDB with per-vehicle retrieval |
-| Embeddings | `sentence-transformers/all-MiniLM-L6-v2` through FastEmbed ONNX |
-| Question understanding and answers | Google Gemini API |
-| Documents | PDF and DOCX extraction |
+1. Open Command Prompt in this project folder.
+2. Double-click `run_windows.bat`. It installs dependencies if needed, indexes catalogue entries, then starts the server.
+3. Add `GEMINI_API_KEY` to `.env` when prompted, close and rerun the launcher.
+4. Open <http://127.0.0.1:8080> and leave the terminal window open while using the app.
 
-## Run locally on Windows
+The launcher now pauses and displays the error if setup/indexing/startup fails. If dependency installation is interrupted, resolve package-index/network access and run it again.
 
-You need Python 3.11 or newer and a Gemini API key.
+## Indexing sources
 
-```powershell
-py -m venv .venv
-.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-Copy-Item .env.example .env
+Run from this folder:
+
+```bat
+.venv\Scripts\python.exe prepare_buyer_guide.py
+.venv\Scripts\python.exe ingest_corpus.py
 ```
 
-Add your key to `.env`:
+The preparation script creates active-scope vehicle sections from both supplied Word guides. It deliberately skips duplicated, ambiguous, or excluded vehicle sections, and preserves the original DOCX files. Review `Data/catalog.csv` and `Data/project_scope.json` for source mapping and readiness.
 
-```text
-GEMINI_API_KEY=your-key
-GEMINI_MODEL=gemini-3.5-flash-lite
-```
+For new sources, put them under `Data/sources/`, map the correct brand/model in `Data/catalog.csv` and active scope, then run `ingest_corpus.py`.
 
-Keep `.env` private. Then start the app:
+## Render deployment
 
-```powershell
-python app.py
-```
+The repository includes `render.yaml` and a Dockerfile for a Render preview. Configure `GEMINI_API_KEY` in Render's environment settings; never commit `.env` or API keys. Render uses a prebuilt Chroma index and disables live uploads. Only publish source documents you have permission to redistribute.
 
-Open [http://127.0.0.1:8080](http://127.0.0.1:8080). You can also use `start_app_windows.bat`.
+## Important limitations
 
-To index your own brochures, place them under `Data/sources/`, update `Data/catalog.csv`, then run:
-
-```powershell
-python ingest_corpus.py
-```
-
-Do not commit private documents or API keys.
-
-## Live preview
-
-- **App:** [autosaarthi-india.onrender.com](https://autosaarthi-india.onrender.com)
-- **Repository:** [github.com/KMRakshithGowda/AutoSaarthi](https://github.com/KMRakshithGowda/AutoSaarthi)
-
-The app is hosted on Render's free plan. It may take around a minute to wake after inactivity. The hosted preview uses the preloaded Chroma index; live uploads and original PDF downloads are disabled there. They remain available for local use.
-
-## Project structure
-
-```text
-app.py                 Flask routes and chat flow
-src/rag.py             Document ingestion and retrieval
-Data/                  Catalogue, question bank, manifest, and portal links
-chroma_db/             Prebuilt brochure text index
-templates/             HTML interface
-static/                CSS and JavaScript
-render.yaml            Render service configuration
-Dockerfile             Hosted app image
-```
-
-## Scope and limitations
-
-AutoSaarthi is designed to answer vehicle questions from indexed brochure passages. If the requested vehicle is not indexed, it returns `Sorry, I have no information about it.` If a detail is absent from the supplied source, it says so. Check the displayed source location before relying on a specification; the app does not independently verify manufacturer claims or current vehicle availability.
-
-The app has been manually exercised with brochure questions. A formal held-out evaluation with measured retrieval and answer-accuracy results has not yet been published.
-
-## Data and secrets
-
-The public repository includes the prebuilt ChromaDB text index and manifest, but not the original brochure PDFs or API key. Only index documents you have permission to share. Keep `.env` private; it is excluded from Git.
+This is a student project, not a professional automotive advisory service. PDFs and project guide values can be incomplete or inaccurate; check cited primary sources for safety, mileage, pricing, and variant-level claims. Website portals are external links and are not scraped into the local database.

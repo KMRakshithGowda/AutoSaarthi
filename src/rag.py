@@ -39,6 +39,7 @@ if not MANIFEST_PATH.is_absolute():
 COLLECTION = "autosaarthi"
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
 FALLBACK = "Sorry, I have no information about it."
+PROJECT_SCOPE_PATH = DATA_DIR / "project_scope.json"
 
 _embeddings = None
 _cached_embeddings = None
@@ -82,6 +83,54 @@ def _manifest() -> dict[str, Any]:
         except (json.JSONDecodeError, OSError):
             pass
     return {"documents": []}
+
+
+@lru_cache(maxsize=1)
+def project_scope() -> dict[str, Any]:
+    try:
+        return json.loads(PROJECT_SCOPE_PATH.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {"active_vehicles": [], "excluded_vehicles": []}
+
+
+def _scope_key(brand: str, model: str) -> tuple[str, str]:
+    return (" ".join(str(brand).casefold().split()), " ".join(str(model).casefold().split()))
+
+
+def _active_scope_entries() -> list[dict[str, Any]]:
+    return project_scope().get("active_vehicles", [])
+
+
+def list_supported_vehicles() -> list[dict[str, str]]:
+    return [
+        {"brand": str(item.get("brand", "")).strip(), "model": str(item.get("model", "")).strip()}
+        for item in _active_scope_entries()
+    ]
+
+
+def supported_vehicles_in_question(question: str) -> list[dict[str, str]]:
+    normalized = _canonicalize_scope_aliases(question)
+    found = []
+    for item in _active_scope_entries():
+        brand, model = str(item.get("brand", "")).strip(), str(item.get("model", "")).strip()
+        if model and re.search(_phrase_pattern(model), normalized, re.I):
+            entry = {"brand": brand, "model": model}
+            if entry not in found:
+                found.append(entry)
+    return found
+
+
+def _canonicalize_scope_aliases(question: str) -> str:
+    aliases = []
+    for entry in _active_scope_entries():
+        canonical = str(entry.get("model", "")).strip()
+        for alias in entry.get("aliases", []):
+            alias = str(alias).strip()
+            if alias and canonical and alias.casefold() != canonical.casefold():
+                aliases.append((alias, canonical))
+    for alias, canonical in sorted(aliases, key=lambda pair: len(pair[0]), reverse=True):
+        question = re.sub(_phrase_pattern(alias), lambda _m: canonical, question, flags=re.I)
+    return question
 
 
 def _save_manifest(data: dict[str, Any]) -> None:
@@ -201,6 +250,32 @@ def _read_docx(path: Path) -> list[tuple[str, str]]:
     return extracted
 
 
+def _read_txt(path: Path) -> list[tuple[str, str]]:
+    """Read review notes/transcripts, preserving timestamp markers when present."""
+    text = path.read_text(encoding="utf-8-sig", errors="replace")
+    timestamp = re.compile(r"^\s*\[?((?:\d{1,2}:)?\d{1,2}:\d{2}(?:\.\d+)?)\]?\s*[-–—:]?\s*(.*)$")
+    groups: list[tuple[str, str]] = []
+    current_locator = "text"
+    current: list[str] = []
+    for line in text.splitlines():
+        match = timestamp.match(line)
+        if match:
+            if current and " ".join(current).strip():
+                groups.append((" ".join(current).strip(), current_locator))
+            current_locator = f"timestamp {match.group(1)}"
+            current = [match.group(2)] if match.group(2).strip() else []
+        elif line.strip():
+            current.append(line.strip())
+        elif current and " ".join(current).strip():
+            groups.append((" ".join(current).strip(), current_locator))
+            current, current_locator = [], "text"
+    if current and " ".join(current).strip():
+        groups.append((" ".join(current).strip(), current_locator))
+    if not groups:
+        raise ValueError("No searchable text was found in the TXT source.")
+    return groups
+
+
 def _infer_upload_details(path: Path, extracted: list[tuple[str, str]], supplied: dict[str, str], display_filename: str | None = None) -> dict[str, str]:
     """Fill optional upload metadata from the filename and opening document text."""
     catalog = list_documents()
@@ -253,6 +328,7 @@ def _infer_upload_details(path: Path, extracted: list[tuple[str, str]], supplied
         "body_type": (supplied.get("body_type") or "").strip() or "Not specified",
         "fuel_type": (supplied.get("fuel_type") or "").strip() or "Not specified",
         "active_in_india": supplied.get("active_in_india", "unknown") or "unknown",
+        "source_type": (supplied.get("source_type") or "").strip(),
     }
     return inferred
 
@@ -264,8 +340,9 @@ def ingest_file(
     display_filename: str | None = None,
 ) -> dict[str, Any]:
     file_hash = hashlib.sha256(path.read_bytes()).hexdigest()
+    requested_identity = _scope_key(details.get("brand", ""), details.get("model", ""))
     with _ingestion_lock:
-        existing = next((d for d in _manifest()["documents"] if d.get("sha256") == file_hash), None)
+        existing = next((d for d in _manifest()["documents"] if d.get("sha256") == file_hash and (not all(requested_identity) or _scope_key(d.get("brand", ""), d.get("model", "")) == requested_identity)), None)
         if existing:
             return {**existing, "already_indexed": True}
 
@@ -274,12 +351,17 @@ def ingest_file(
         extracted = _read_pdf(path)
     elif suffix == ".docx":
         extracted = _read_docx(path)
+    elif suffix in {".txt", ".md"}:
+        extracted = _read_txt(path)
     else:
-        raise ValueError("Upload a PDF or DOCX document.")
+        raise ValueError("Index a PDF, DOCX, or TXT source.")
 
     details = _infer_upload_details(path, extracted, details, display_filename)
+    requested_identity = _scope_key(details.get("brand", ""), details.get("model", ""))
 
-    doc_id = file_hash[:20]
+    matching_hash_records = [d for d in _manifest()["documents"] if d.get("sha256") == file_hash]
+    entity_suffix = hashlib.sha256("|".join(requested_identity).encode("utf-8")).hexdigest()[:6]
+    doc_id = file_hash[:20] if not matching_hash_records else f"{file_hash[:20]}-{entity_suffix}"
     source_name = display_filename or path.name
     splitter = RecursiveCharacterTextSplitter(chunk_size=550, chunk_overlap=60, add_start_index=True)
     documents: list[Document] = []
@@ -287,9 +369,17 @@ def ingest_file(
     for text, locator in extracted:
         if not text.strip():
             continue
-        page_doc = Document(page_content=text, metadata={"locator": locator})
+        source_type = details.get("source_type", "youtube_transcript" if suffix in {".txt", ".md"} else "official_brochure" if suffix == ".pdf" else "document")
+        source_label = {
+            "youtube_transcript": "YouTube Review",
+            "official_brochure": "Official Brochure",
+            "buyer_guide": "Buyer Guide",
+            "expert_user_reviews": "Expert and User Reviews",
+        }.get(source_type, "Project Document")
+        evidence_tag = f"[{details['brand'].strip()} {details['model'].strip()} {source_label}]"
+        page_doc = Document(page_content=f"{evidence_tag}\n{text}", metadata={"locator": locator})
         chunks = splitter.split_documents([page_doc])
-        for chunk_no, chunk in enumerate(chunks):
+        for chunk in chunks:
             chunk.metadata.update({
                 "doc_id": doc_id,
                 "source": source_name,
@@ -303,9 +393,12 @@ def ingest_file(
                 "fuel_type": details.get("fuel_type", "").strip() or "Not specified",
                 "active_in_india": details.get("active_in_india", "unknown"),
                 "official_source_url": official_url.strip(),
+                "source_type": details.get("source_type", "youtube_transcript" if suffix in {".txt", ".md"} else "official_brochure" if suffix == ".pdf" else "document"),
             })
             documents.append(chunk)
-            ids.append(f"{doc_id}-{locator.replace(' ', '-')}-{chunk_no}")
+            # Locators like "text" can repeat across split PDF/DOCX blocks;
+            # a document-global ordinal guarantees unique IDs for Chroma.
+            ids.append(f"{doc_id}-{len(documents) - 1}")
 
     if not documents:
         raise ValueError("No searchable text was found. This may be a scanned document; OCR is not enabled yet.")
@@ -334,10 +427,11 @@ def ingest_file(
         "indexed_at": __import__("datetime").datetime.now().astimezone().isoformat(timespec="minutes"),
         "file_path": stored_path,
         "file_type": suffix[1:],
+        "source_type": details.get("source_type", "youtube_transcript" if suffix in {".txt", ".md"} else "official_brochure" if suffix == ".pdf" else "document"),
     }
     with _ingestion_lock:
         manifest = _manifest()
-        existing = next((d for d in manifest["documents"] if d.get("sha256") == file_hash), None)
+        existing = next((d for d in manifest["documents"] if d.get("sha256") == file_hash and _scope_key(d.get("brand", ""), d.get("model", "")) == requested_identity), None)
         if existing:
             return {**existing, "already_indexed": True}
         store = _store_instance()
@@ -357,7 +451,21 @@ def ingest_file(
 
 
 def list_documents() -> list[dict[str, Any]]:
-    return _manifest().get("documents", [])
+    active = {_scope_key(entry.get("brand", ""), entry.get("model", "")) for entry in _active_scope_entries()}
+    excluded_names = {
+        str(name).casefold()
+        for entry in _active_scope_entries()
+        for name in entry.get("excluded_files", [])
+    }
+    visible = []
+    for record in _manifest().get("documents", []):
+        if not is_builtin_document(record):
+            visible.append(record)
+            continue
+        filename = str(record.get("filename", Path(record.get("file_path", "")).name)).casefold()
+        if filename not in excluded_names and _scope_key(record.get("brand", ""), record.get("model", "")) in active:
+            visible.append(record)
+    return visible
 
 
 def is_builtin_document(record: dict[str, Any]) -> bool:
@@ -382,8 +490,11 @@ def search_passages(query: str, limit: int = 10) -> list[dict[str, str]]:
     if not query or not catalog:
         return []
 
+    active_ids = [str(d.get("doc_id", "")) for d in catalog if d.get("doc_id")]
+    if not active_ids:
+        return []
     found = _store_instance().max_marginal_relevance_search(
-        query, k=limit, fetch_k=max(limit * 4, 30)
+        query, k=limit, fetch_k=max(limit * 4, 30), filter={"doc_id": {"$in": active_ids}}
     )
     file_types = {d.get("doc_id"): d.get("file_type", "") for d in catalog}
     results = []
@@ -401,6 +512,7 @@ def search_passages(query: str, limit: int = 10) -> list[dict[str, str]]:
             "locator": metadata.get("locator", ""),
             "active_in_india": metadata.get("active_in_india", "unknown"),
             "file_type": file_types.get(metadata.get("doc_id", ""), ""),
+            "source_type": metadata.get("source_type", "official_brochure"),
             # Extracted PDF layout can include large whitespace/newline runs;
             # keep search previews compact so one odd page cannot stretch the UI.
             "excerpt": " ".join(doc.page_content.split())[:360],
@@ -431,6 +543,7 @@ def _correct_query_spelling(question: str) -> str:
     catalogue or a small automotive vocabulary. This helps retrieval with
     misspellings without letting a language model invent a different vehicle.
     """
+    question = _canonicalize_scope_aliases(question)
     catalog = list_documents()
     model_tokens = {
         token.casefold()
@@ -488,6 +601,8 @@ def _retrieval_query(question: str, brand: str = "", model: str = "") -> str:
         additions.append("fuel efficiency mileage ARAI range driving range")
     if re.search(r"\b(safety|airbag|crash)\b", question, re.I):
         additions.append("safety features airbags crash protection")
+    if re.search(r"\b(expert|review|rating|score|owner|feedback|pros|cons)\b", question, re.I):
+        additions.append("expert rating user score owner experience practical feedback review verdict")
     return " ".join(part for part in [question, brand, model, *additions] if part)
 
 
@@ -500,12 +615,24 @@ def _resolve_entities(question: str, records: list[dict[str, Any]] | None = None
     q = question.casefold()
     records = records if records is not None else list_documents()
     names = sorted({d["model"] for d in records if d.get("model")}, key=len, reverse=True)
+    alias_to_model = {
+        str(alias).casefold(): str(entry.get("model", ""))
+        for entry in _active_scope_entries()
+        for alias in entry.get("aliases", [])
+        if entry.get("model")
+    }
+    scoped_names = sorted(alias_to_model, key=len, reverse=True)
     spans: list[tuple[int, int, str]] = []
     for name in names:
         pattern = re.compile(_phrase_pattern(name))
         for match in pattern.finditer(q):
             if not any(match.start() < end and match.end() > start for start, end, _ in spans):
                 spans.append((match.start(), match.end(), name))
+    for alias in scoped_names:
+        pattern = re.compile(_phrase_pattern(alias))
+        for match in pattern.finditer(q):
+            if not any(match.start() < end and match.end() > start for start, end, _ in spans):
+                spans.append((match.start(), match.end(), alias_to_model[alias]))
 
     entities = []
     mentioned_brands = {d.get("brand", "") for d in records if d.get("brand") and re.search(_phrase_pattern(d["brand"]), q)}
@@ -623,6 +750,7 @@ def retrieve(question: str, document_ids: list[str] | None = None, built_in_only
     # Per-model retrieval prevents a single car from taking every result slot
     # in a head-to-head comparison. MMR diversifies within each model's pool.
     found: list[Document] = []
+    asks_for_review_summary = bool(re.search(r"\b(expert|user|owner)\s+(?:review\s+)?(?:rating|score|feedback)|\buser score\b|\bexpert rating\b", search_question, re.I))
     if len(entities) >= 2:
         for entity in entities[:3]:
             where = {"$and": [{"model": {"$eq": entity["model"]}}, {"brand": {"$eq": entity["brand"]}}]}
@@ -633,6 +761,13 @@ def retrieve(question: str, document_ids: list[str] | None = None, built_in_only
             matching = store.max_marginal_relevance_search(
                 query, k=4, fetch_k=10, lambda_mult=0.65, filter=where
             )
+            if asks_for_review_summary:
+                review_conditions = list(where["$and"]) + [{"source_type": {"$eq": "expert_user_reviews"}}]
+                if entity.get("doc_ids"):
+                    review_conditions.append({"doc_id": {"$in": entity["doc_ids"]}})
+                matching.extend(store.similarity_search(
+                    query, k=1, filter={"$and": review_conditions}
+                ))
             if selected_group and not matching:
                 matching = store.similarity_search(query, k=4, filter=where)
             found.extend(matching)
@@ -646,6 +781,13 @@ def retrieve(question: str, document_ids: list[str] | None = None, built_in_only
         found = store.max_marginal_relevance_search(
             query, k=6, fetch_k=12, lambda_mult=0.65, filter=where
         )
+        if asks_for_review_summary:
+            review_conditions = list(where["$and"]) + [{"source_type": {"$eq": "expert_user_reviews"}}]
+            if entity.get("doc_ids"):
+                review_conditions.append({"doc_id": {"$in": entity["doc_ids"]}})
+            found.extend(store.similarity_search(
+                query, k=1, filter={"$and": review_conditions}
+            ))
         if selected_group and not found:
             found = store.similarity_search(query, k=6, filter=where)
 
@@ -673,6 +815,7 @@ def retrieve(question: str, document_ids: list[str] | None = None, built_in_only
             "doc_id": doc.metadata.get("doc_id", ""),
             "active_in_india": doc.metadata.get("active_in_india", "unknown"),
             "file_type": next((d.get("file_type", "") for d in docs if d.get("doc_id") == doc.metadata.get("doc_id")), ""),
+            "source_type": doc.metadata.get("source_type", "official_brochure"),
         })
     return results, sources
 
@@ -693,6 +836,7 @@ def context_for(docs: list[Document]) -> str:
             if value and value.casefold() not in {"not stated", "not specified", "unknown", "n/a"}:
                 scope_parts.append(f"{label} {value}")
         scope = " | ".join(part for part in scope_parts if part)
-        sections.append(f"[{scope}]\n{doc.page_content}")
+        source_type = str(m.get("source_type", "official_brochure")).replace("_", " ").title()
+        sections.append(f"[{scope} | source type {source_type} | locator {m.get('locator', 'not provided')}]\n{doc.page_content}")
     return "\n\n---\n\n".join(sections)
 

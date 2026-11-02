@@ -284,10 +284,23 @@ function appendMessage(role, text, sources=[]) {
   if (role === 'user') { avatar.textContent='You'; avatar.setAttribute('aria-label','You'); }
   else { avatar.innerHTML='<svg viewBox="0 0 48 48" aria-label="Gemini"><defs><linearGradient id="gemini-gradient" x1="5" y1="40" x2="42" y2="7" gradientUnits="userSpaceOnUse"><stop stop-color="#4285F4"/><stop offset=".48" stop-color="#9B72CB"/><stop offset="1" stop-color="#D96570"/></linearGradient></defs><path fill="url(#gemini-gradient)" d="M24 3C27.2 14.4 33.6 20.8 45 24C33.6 27.2 27.2 33.6 24 45C20.8 33.6 14.4 27.2 3 24C14.4 20.8 20.8 14.4 24 3Z"/></svg>'; avatar.setAttribute('aria-label','Gemini AI'); }
   const bubble = document.createElement('div'); bubble.className='bubble';
-  if (role !== 'user') { const meta=document.createElement('div'); meta.className='message-meta'; meta.textContent='GEMINI AI · brochure-grounded'; bubble.append(meta); }
+  if (role !== 'user') { const meta=document.createElement('div'); meta.className='message-meta'; meta.textContent='GEMINI AI · AutoSaarthi'; bubble.append(meta); }
   const body=document.createElement('div'); body.className='answer-body';
   if (role === 'user') body.textContent=text; else renderAnswer(body,text);
   bubble.append(body);
+  if (role !== 'user' && sources.length) {
+    const list=document.createElement('div'); list.className='message-sources';
+    sources.forEach(source=>{
+      const link=document.createElement('a'); link.className='source-chip';
+      const kind=source.source_type==='youtube_transcript'?'YouTube review':source.source_type==='buyer_guide'?'Buyer guide':source.source_type==='expert_user_reviews'?'Expert & user reviews':'Official brochure';
+      const locator=source.locator?` · ${source.locator}`:'';
+      link.textContent=`${kind} · ${source.filename||'Source'}${locator}`;
+      if(source.doc_id){const page=(String(source.locator||'').match(/page\s+(\d+)/i)||[])[1];link.href=`/api/documents/${encodeURIComponent(source.doc_id)}/file${page?`#page=${page}`:''}`;}
+      else if(source.official_source_url)link.href=source.official_source_url;
+      link.target='_blank';link.rel='noopener noreferrer';list.append(link);
+    });
+    bubble.append(list);
+  }
   article.append(avatar,bubble); $('#messages').append(article); $('#messages').scrollTop=$('#messages').scrollHeight;
 }
 
