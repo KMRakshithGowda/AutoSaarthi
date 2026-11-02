@@ -526,6 +526,36 @@ def _phrase_pattern(value: str) -> str:
     return r"(?<![\w])" + r"[\W_]+".join(parts) + r"(?![\w])"
 
 
+def _one_edit_or_transposition_apart(left: str, right: str) -> bool:
+    """Allow a single insertion, deletion, substitution, or adjacent swap."""
+    if abs(len(left) - len(right)) > 1:
+        return False
+    if left == right:
+        return True
+    if len(left) == len(right):
+        mismatches = [i for i, (a, b) in enumerate(zip(left, right)) if a != b]
+        if len(mismatches) == 1:
+            return True
+        return (
+            len(mismatches) == 2
+            and mismatches[1] == mismatches[0] + 1
+            and left[mismatches[0]] == right[mismatches[1]]
+            and left[mismatches[1]] == right[mismatches[0]]
+        )
+    shorter, longer = sorted((left, right), key=len)
+    i = j = edits = 0
+    while i < len(shorter) and j < len(longer):
+        if shorter[i] == longer[j]:
+            i += 1
+            j += 1
+        else:
+            edits += 1
+            j += 1
+            if edits > 1:
+                return False
+    return True
+
+
 _AUTO_QUERY_TERMS = {
     "boot", "space", "capacity", "volume", "length", "width", "height",
     "wheelbase", "ground", "clearance", "mileage", "range", "battery",
@@ -533,6 +563,19 @@ _AUTO_QUERY_TERMS = {
     "variant", "features", "feature", "diesel", "petrol", "hybrid", "electric",
     "automatic", "manual", "sunroof", "seats", "seating", "dimensions",
     "compare", "comparison", "versus", "difference", "between",
+}
+
+_COMMON_QUERY_WORDS = {
+    "about", "after", "all", "also", "among", "and", "any", "are", "around",
+    "because", "before", "between", "both", "can", "car", "cars", "compare",
+    "could", "details", "difference", "does", "each", "explain", "find", "for",
+    "from", "give", "has", "have", "how", "into", "is", "list", "like", "make",
+    "me", "model", "models", "more", "most", "new", "of", "on", "one", "only",
+    "other", "please", "practical", "same", "show", "tell", "than", "that", "the",
+    "their", "them", "there", "these", "they", "this", "those", "through", "to",
+    "under", "user", "users", "using", "very", "versus", "vehicle", "vehicles",
+    "want", "was", "were", "what", "when", "where", "which", "who", "why", "will",
+    "with", "would", "you", "your",
 }
 
 
@@ -565,19 +608,17 @@ def _correct_query_spelling(question: str) -> str:
         folded = word.casefold()
         if folded == "bot":
             return "Boot" if word[:1].isupper() else "boot"
-        if len(folded) < 4 or folded in vocabulary:
+        if len(folded) < 4 or folded in vocabulary or folded in _COMMON_QUERY_WORDS:
             return word
         matches = get_close_matches(folded, vocabulary, n=1, cutoff=0.78)
         if not matches:
             return word
         candidate = matches[0]
-        # Require a single-character edit for catalogue model-name corrections;
-        # otherwise a discontinued/unindexed model could be mistaken for one
-        # that happens to be present.
-        if candidate in model_tokens or candidate in brand_tokens:
-            from difflib import SequenceMatcher
-            if SequenceMatcher(None, folded, candidate).ratio() < 0.80:
-                return word
+        # Similarity alone can turn ordinary words into model names (for
+        # example, "user" into "Duster"). Only accept a genuinely single-edit
+        # correction, including adjacent transpositions such as "wagnor".
+        if not _one_edit_or_transposition_apart(folded, candidate):
+            return word
         return candidate.capitalize() if word[:1].isupper() else candidate
 
     return re.sub(r"[A-Za-z][A-Za-z0-9-]*", replace, question)
@@ -750,7 +791,11 @@ def retrieve(question: str, document_ids: list[str] | None = None, built_in_only
     # Per-model retrieval prevents a single car from taking every result slot
     # in a head-to-head comparison. MMR diversifies within each model's pool.
     found: list[Document] = []
-    asks_for_review_summary = bool(re.search(r"\b(expert|user|owner)\s+(?:review\s+)?(?:rating|score|feedback)|\buser score\b|\bexpert rating\b", search_question, re.I))
+    asks_for_review_summary = bool(re.search(
+        r"\b(?:review|reviews|rating|ratings|score|scores|feedback|experience|verdict|ncap|crash rating)\b",
+        search_question,
+        re.I,
+    ))
     if len(entities) >= 2:
         for entity in entities[:3]:
             where = {"$and": [{"model": {"$eq": entity["model"]}}, {"brand": {"$eq": entity["brand"]}}]}
